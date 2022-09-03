@@ -28,7 +28,7 @@ public class Utility {
 	}
 	
 	private static String show(String k, Object v, HashMap<String,Object> t) {
-		if(!(k.indexOf("^_")  != -1)) {
+		if(k.indexOf("^_")  == -1) {
 			return t.size() == 0 ? String.format(":%s %s",k,v.toString()) : String.valueOf(v);
 		}
 		return null;

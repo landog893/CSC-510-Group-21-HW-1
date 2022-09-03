@@ -60,7 +60,7 @@ public class Sym {
 			}
 			// if the key is not already in the hashmap, add with 0 as the value
 			else {
-				this._has.put(v, 0);
+				this._has.put(v, 1);
 			}
 		}
 	}
@@ -93,13 +93,13 @@ public class Sym {
 		for (Map.Entry<String, Integer> entry: this._has.entrySet()) {
 			int n = entry.getValue();
 			if(n>0) {
-				e = e - this.divFun(n/this.n);
+				e = e - this.divFun((double)n/this.n);
 			}
 		}
 		return e;
 	}
 
-	private double divFun(int n) {
+	private double divFun(double n) {
 		return n*(Math.log(n)/ Math.log(2));
 }
 	
