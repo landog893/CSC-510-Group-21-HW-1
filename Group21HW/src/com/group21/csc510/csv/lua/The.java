@@ -4,11 +4,11 @@ package com.group21.csc510.csv.lua;
 import java.util.HashMap;
 
 
-public class the {
+public class The {
 	
 	private HashMap<String,Integer> nums;
 	
-	public the(HashMap<String,Integer> nums) {
+	public The(HashMap<String,Integer> nums) {
 		this.nums=nums;
 	}
 

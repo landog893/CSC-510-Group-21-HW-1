@@ -15,7 +15,7 @@ import java.util.*;
  *
  */
 
-public class cli {
+public class Lua {
 	/**
 	 * @param args
 	 */

@@ -42,6 +42,39 @@ public class Sym {
 		this._has= new HashMap<String, Integer>();
 	}
 	
+	/**
+	 * Sym constructor with only string
+	 * @param s String for s 
+	 */
+	public Sym(String s){
+		this.n = 0;
+		this.at = 0; // unsure about at=c or 0
+		this.name = s;
+		this._has= new HashMap<String, Integer>();
+	}
+	
+	/**
+	 * Sym constructor with only column position
+	 * @param c int for column position
+	 */
+	public Sym(int c){
+		this.n = 0;
+		this.at = c; // unsure about at=c or 0
+		this.name = "";
+		this._has= new HashMap<String, Integer>();
+	}
+	
+	/**
+	 * Sym constructor.
+	 */
+	public Sym(){
+		this.n = 0;
+		this.at = 0; // unsure about at=c or 0
+		this.name = "";
+		this._has= new HashMap<String, Integer>();
+	}
+	
+	
 //	  -- ## Sym
 //	  -- Add one thing to `col`. For Num, keep at most `nums` items.
 //	  function Sym:add(v)
@@ -101,6 +134,6 @@ public class Sym {
 
 	private double divFun(double n) {
 		return n*(Math.log(n)/ Math.log(2));
-}
+	}
 	
 }
