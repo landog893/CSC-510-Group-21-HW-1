@@ -27,18 +27,15 @@ import java.util.Map;
 public class Num {
 	
 	private int n;
-	private boolean isSorted;
+	private boolean isSorted = true;
 	private HashMap<String,Integer> _has;
-	private int lo;
-	private int hi;
+	private int lo = Integer.MAX_VALUE;
+	private int hi = Integer.MAX_VALUE;
 	private the the_var;
 	
-	public Num(int n, boolean isSorted, HashMap<String,Integer> _has, int lo, int hi, the the_var){
+	public Num(int n,  HashMap<String,Integer> _has, the the_var){
 		this.n=n;
-		this.isSorted=isSorted;
 		this._has = _has;
-		this.lo = lo;
-		this.hi= hi;
 		this.the_var = the_var;
 	}
 	
@@ -79,8 +76,8 @@ public class Num {
 	 * Here I declare a dictionary variable for _has storing the frequency for each numbers may be I am not sure
 	 * There is a object "the" which have a nums dictionary may be different/ similar to the _has 
 	 * According to the declarations of different variables I perform the if else conditions. */	
-	public void add(String v, int pos) {
-		
+	public void add(String v) {
+		int pos = 0;
 		if (v != "?"){
 			int vn = Integer.parseInt(v);
 			this.n = this.n + 1;			
