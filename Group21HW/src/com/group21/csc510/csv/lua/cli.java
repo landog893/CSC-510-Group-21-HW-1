@@ -3,7 +3,7 @@ package com.group21.csc510.csv.lua;
 /**
  * 
  */
-
+import java.util.*;
 /**
  * @author Shruti Marota
  * @author Landon Gaddy
@@ -21,7 +21,13 @@ public class cli {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Map<String,Integer> test = new HashMap<>();
+		testMethod(test);
+		
+	}
+	
+	public static void testMethod(Object t) {
+		System.out.println(t.getClass().toString());
 	}
 
 }

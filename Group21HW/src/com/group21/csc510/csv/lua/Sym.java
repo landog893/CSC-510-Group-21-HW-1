@@ -1,7 +1,6 @@
 package com.group21.csc510.csv.lua;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 
@@ -70,8 +69,9 @@ public class Sym {
 //	    most=-1; for k,v in pairs(self._has) do if v>most then mode,most=k,v end end
 //	    return mode end 
 		
-	public int mid(String col, int most, String mode) {
-		most = -1;
+	public String mid() {
+		int most = -1;
+		String mode = null;
 		
 		for (Map.Entry<String, Integer> entry : this._has.entrySet()) {
 		    String key = entry.getKey();
@@ -81,11 +81,26 @@ public class Sym {
 		    	most = value;
 		    }
 		}
-		return Integer.parseInt(mode);
+		return mode;
 	}
 //	  function Sym:div(    e,fun)
 //	    function fun(p) return p*math.log(p,2) end
 //	    e=0; for _,n in pairs(self._has) do if n>0 then e=e - fun(n/self.n) end end
 //	    return e end 
+
+	public double div() {
+		double e = 0;
+		for (Map.Entry<String, Integer> entry: this._has.entrySet()) {
+			int n = entry.getValue();
+			if(n>0) {
+				e = e - this.divFun(n/this.n);
+			}
+		}
+		return e;
+	}
+
+	private double divFun(int n) {
+		return n*(Math.log(n)/ Math.log(2));
+}
 	
 }
