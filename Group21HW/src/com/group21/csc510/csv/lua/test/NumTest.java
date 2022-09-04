@@ -40,8 +40,8 @@ class NumTest {
 		for(int i = 1; i < 100; i++) {
 			num.add(Integer.toString(i));
 		}
-		float mid = num.mid();
-		float div = num.div();
+		double mid = num.mid();
+		double div = num.div();
 		assertTrue( mid >= 50 && mid <= 100);
 		assertTrue( div >= 30.5 && div <= 32);
 	}
@@ -49,7 +49,7 @@ class NumTest {
 	@Test
 	void bigNum() {
 		Num num = new Num(the);
-		the.nums.put("nums", "32");
+		the.put("nums", "32");
 		for(int i = 1; i < 1000; i++) {
 			num.add(Integer.toString(i));
 		}
