@@ -1,6 +1,7 @@
 package com.group21.csc510.csv.lua;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -30,10 +31,10 @@ public class Num {
 	private int n;
 	private String name;
 	private boolean isSorted = true;
-	public HashMap<String,Integer> _has;
+	public List<Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
-	private HashMap<String,Integer> the_var;
+	private HashMap<String,String> the_var;
 	private int at;
 	
 	/*
@@ -50,11 +51,11 @@ public class Num {
 	 * @param c int for column position
 	 * @param s String for s 
 	 */
-	public Num(int c, String s, HashMap<String,Integer> the_var){
+	public Num(int c, String s, HashMap<String,String> the_var){
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = s;
-		this._has= new HashMap<String, Integer>();
+		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
 	}
 	
@@ -62,11 +63,11 @@ public class Num {
 	 * Sym constructor with only string
 	 * @param s String for s 
 	 */
-	public Num(String s,HashMap<String,Integer> the_var){
+	public Num(String s,HashMap<String,String> the_var){
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = s;
-		this._has= new HashMap<String, Integer>();
+		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
 	}
 	
@@ -74,55 +75,33 @@ public class Num {
 	 * Sym constructor with only column position
 	 * @param c int for column position
 	 */
-	public Num(int c,HashMap<String,Integer> the_var){
+	public Num(int c,HashMap<String,String> the_var){
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = "";
-		this._has= new HashMap<String, Integer>();
+		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
 	}
 	
 	/**
 	 * Sym constructor.
 	 */
-	public Num(HashMap<String,Integer> the_var){
+	public Num(HashMap<String,String> the_var){
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = "";
-		this._has= new HashMap<String, Integer>();
+		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
 	}
 	
-	public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
-    {
-        // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer> > list =
-               new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
- 
-        // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2)
-            {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
-         
-        // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
-    }
 	
-	public List nums(){
+	public List<Integer> nums(){
 		 
 		if (!this.isSorted) {
-			this._has = sortByValue(this._has );
+			 this._has.sort(Comparator.naturalOrder());
 		}
-		List<Integer> values = new ArrayList<>(this._has.values());
-		return values;
+		
+		return this._has;
 	}
 	/* Considered v as String type. So, if not "?" then we will consider the next steps for changing values for variable 
 	 * n, 
@@ -147,7 +126,7 @@ public class Num {
 			else if (Math.random() < nums *1.0/this.n) {
 				this.isSorted = false;
 				pos = (int) (Math.random() * size_);
-				this._has.put(Integer.toString(pos), vn);
+				this._has.add(pos, vn);
 			}
 		}
 		
