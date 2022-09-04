@@ -1,5 +1,6 @@
 package com.group21.csc510.csv.lua;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class Num {
 	private HashMap<String,Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
-	private The the_var;
+	private HashMap<String,Integer> the_var;
 	private int at;
 	
 	/*
@@ -49,7 +50,7 @@ public class Num {
 	 * @param c int for column position
 	 * @param s String for s 
 	 */
-	public Num(int c, String s, The the_var){
+	public Num(int c, String s, HashMap<String,Integer> the_var){
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = s;
@@ -61,7 +62,7 @@ public class Num {
 	 * Sym constructor with only string
 	 * @param s String for s 
 	 */
-	public Num(String s,The the_var){
+	public Num(String s,HashMap<String,Integer> the_var){
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = s;
@@ -73,7 +74,7 @@ public class Num {
 	 * Sym constructor with only column position
 	 * @param c int for column position
 	 */
-	public Num(int c,The the_var){
+	public Num(int c,HashMap<String,Integer> the_var){
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = "";
@@ -84,7 +85,7 @@ public class Num {
 	/**
 	 * Sym constructor.
 	 */
-	public Num(The the_var){
+	public Num(HashMap<String,Integer> the_var){
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = "";
@@ -115,12 +116,13 @@ public class Num {
         return temp;
     }
 	
-	public HashMap<String, Integer> nums(){
+	public List nums(){
 		 
 		if (!this.isSorted) {
 			this._has = sortByValue(this._has );
 		}
-		return this._has;
+		List<Integer> values = new ArrayList<>(this._has.values());
+		return values;
 	}
 	/* Considered v as String type. So, if not "?" then we will consider the next steps for changing values for variable 
 	 * n, 
@@ -138,11 +140,11 @@ public class Num {
 			this.hi = Math.max(vn,this.hi);
 			
 			int size_ = this._has.size();
-			HashMap<String,Integer> nums = this.the_var.getNums();
-			if (size_ < nums.size()) {
+			int nums = this.the_var.get("nums");
+			if (size_ < nums) {
 				pos = 1 + size_;
 			}
-			else if (Math.random() < nums.size() *1.0/this.n) {
+			else if (Math.random() < nums *1.0/this.n) {
 				this.isSorted = false;
 				pos = (int) (Math.random() * size_);
 				this._has.put(Integer.toString(pos), vn);
