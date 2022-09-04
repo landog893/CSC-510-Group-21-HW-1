@@ -5,7 +5,7 @@ package com.group21.csc510.csv.lua;
  */
 import java.util.*;
 /**
- * @author Shruti Marota
+ * @author Shruti Marotas
  * @author Landon Gaddy
  * @author Jerry Chang
  * @author Jesse Chen
@@ -20,10 +20,7 @@ public class Lua {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Map<String,Integer> test = new HashMap<>();
-		testMethod(test);
-		The the = new The();
+		HashMap<String,String> the = new HashMap<String,String>();
 		String help = "CSV : summarized csv file\n"
 				+ "(c) 2022 Tim Menzies <timm@ieee.org> BSD-2 license\n"
 				+ "USAGE: lua seen.lua [OPTIONS]\n"
@@ -38,12 +35,12 @@ public class Lua {
 		String[] helpList = help.split("\n");
 		for(int i = 0; i < helpList.length; i++) {
 			if (helpList[i].charAt(1) == '-') {
-				String[] lineList = helpList[i].split(" ");
-				String k = lineList[1].substring(2, lineList[i].length());
-				String x = lineList[4];
+				String[] lineList = helpList[i].split("\\s+");
+				String k = lineList[2].substring(2, lineList[2].length());
+				String x = lineList[lineList.length - 1];
 				
-				for(int j = 0; j < args.length - 1; j= j + 2) {
-					if (args[j].equals("-" + k.substring(1,1)) || args[j].equals("--" + k)) {
+				for(int j = 0; j < args.length - 1; j = j + 2) {
+					if (args[j].equals("-" + k.substring(0,1)) || args[j].equals("--" + k)) {
 						if(x.equals("True")) {
 							x = "False";
 						} else if (x.equals("False")) {
@@ -53,15 +50,15 @@ public class Lua {
 						}
 					}
 				}
-				the.nums.put(k, x);
+				the.put(k, x);
 			}
 			
 		}
-		if(the.nums.get("Help").equals("True")) {
+		if(the.get("help").equals("True")) {
 			System.out.println("\n" + help);
 			System.exit(0);
 		}
-		if (!the.nums.get("eg").equals("nothing")) {
+		if (!the.get("eg").equals("nothing")) {
 			Eg eg = new Eg(the);
 			eg.runs();
 		}
@@ -69,8 +66,8 @@ public class Lua {
 		
 	}
 	
-	public static void testMethod(Object t) {
-		System.out.println(t.getClass().toString());
-	}
+//	public static void testMethod(Object t) {
+//		System.out.println(t.getClass().toString());
+//	}
 
 }

@@ -27,21 +27,16 @@ import com.group21.csc510.csv.lua.The;
 
 class NumTest {
 	
-	private static The the;
+	private static HashMap<String,String> the;
 	
 	@Before
 	void setup() {
-		the = new The(new HashMap<String,String>());
-	}
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
+		the = new HashMap<String,String>();
 	}
 	
 	@Test
 	void num() {
-		Num num = new Num(0, "", the);
+		Num num = new Num(the);
 		for(int i = 1; i < 100; i++) {
 			num.add(Integer.toString(i));
 		}
@@ -53,7 +48,7 @@ class NumTest {
 
 	@Test
 	void bigNum() {
-		Num num = new Num(0, "", the);
+		Num num = new Num(the);
 		the.nums.put("nums", "32");
 		for(int i = 1; i < 1000; i++) {
 			num.add(Integer.toString(i));

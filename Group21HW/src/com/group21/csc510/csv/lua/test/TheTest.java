@@ -27,7 +27,7 @@ class TheTest {
 	void test() {
 		Map<String, Object>the = new HashMap<>();
 		Utility.oo(the);
-		assertEquals(true, true);
+		assertNotNull(the);
 	}
 
 }
