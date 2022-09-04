@@ -29,7 +29,7 @@ public class Num {
 	private int n;
 	private String name;
 	private boolean isSorted = true;
-	private HashMap<String,Integer> _has;
+	public HashMap<String,Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
 	private The the_var;
