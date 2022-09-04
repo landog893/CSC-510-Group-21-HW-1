@@ -152,7 +152,7 @@ public class Num {
 	}
 	
 	
-	public double per(List t, float p) {
+	public float per(List t, float p) {
 	/*
 	  Input:
 	    t: sorted list from this.nums()
@@ -164,15 +164,15 @@ public class Num {
 	*/
 		int Pnew = Math.floor(p * t.size() + 0.5);
 		
-		return t[Math.max(1, Math.min(t.size(), Pnew))]; 
+		return t.get(Math.max(1, Math.min(t.size(), Pnew))); 
 	}
 	
-	public static double div() {
+	public float div() {
 		List a = new this.nums();
 		return (per(a, 0.9) - per(a, 0.1)) / 2.58;
 	}
 	
-	public static double mid() {
+	public float mid() {
 		List a = new this.nums();
 		return per(a, 0.5)
 	}
