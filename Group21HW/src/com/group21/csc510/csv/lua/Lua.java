@@ -42,12 +42,14 @@ public class Lua {
 				String k = lineList[1].substring(2, lineList[i].length());
 				String x = lineList[4];
 				
-				for(int j = 0; j < args.length; j++) {
+				for(int j = 0; j < args.length - 1; j= j + 2) {
 					if (args[j].equals("-" + k.substring(1,1)) || args[j].equals("--" + k)) {
 						if(x.equals("True")) {
 							x = "False";
-						} else {
+						} else if (x.equals("False")) {
 							x = "True";
+						} else {
+							x = args[j + 1];
 						}
 					}
 				}
@@ -58,6 +60,10 @@ public class Lua {
 		if(the.nums.get("Help").equals("True")) {
 			System.out.println("\n" + help);
 			System.exit(0);
+		}
+		if (!the.nums.get("eg").equals("nothing")) {
+			Eg eg = new Eg(the);
+			eg.runs();
 		}
 		
 		
