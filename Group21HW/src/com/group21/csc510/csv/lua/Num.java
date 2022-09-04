@@ -14,7 +14,7 @@ import java.util.Map;
  */
 
 /**
- * @author Shruti Marota
+ * @author Shruti Marotta
  * @author Landon Gaddy
  * @author Jerry Chang
  * @author Jesse Chen
@@ -27,15 +27,68 @@ import java.util.Map;
 public class Num {
 	
 	private int n;
+	private String name;
 	private boolean isSorted = true;
 	private HashMap<String,Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
 	private The the_var;
+	private int at;
 	
-	public Num(int n,  HashMap<String,Integer> _has, The the_var){
-		this.n=n;
-		this._has = new HashMap<String, Integer>();
+	/*
+	function Num:new(c,s) 
+	  return {n=0,at=c or 0, name=s or "", _has={}, -- as per Sym
+	          lo= math.huge,   -- lowest seen
+	          hi= -math.huge,  -- highest seen
+	          isSorted=true,   -- no updates since the last sort of data
+	          w = ((s or ""):find"-$" and -1 or 1)  
+	         } end*/
+
+	/**
+	 * Num constructor.
+	 * @param c int for column position
+	 * @param s String for s 
+	 */
+	public Num(int c, String s, The the_var){
+		this.n = 0;
+		this.at = c; // unsure about at=c or 0
+		this.name = s;
+		this._has= new HashMap<String, Integer>();
+		this.the_var = the_var;
+	}
+	
+	/**
+	 * Sym constructor with only string
+	 * @param s String for s 
+	 */
+	public Num(String s,The the_var){
+		this.n = 0;
+		this.at = 0; // unsure about at=c or 0
+		this.name = s;
+		this._has= new HashMap<String, Integer>();
+		this.the_var = the_var;
+	}
+	
+	/**
+	 * Sym constructor with only column position
+	 * @param c int for column position
+	 */
+	public Num(int c,The the_var){
+		this.n = 0;
+		this.at = c; // unsure about at=c or 0
+		this.name = "";
+		this._has= new HashMap<String, Integer>();
+		this.the_var = the_var;
+	}
+	
+	/**
+	 * Sym constructor.
+	 */
+	public Num(The the_var){
+		this.n = 0;
+		this.at = 0; // unsure about at=c or 0
+		this.name = "";
+		this._has= new HashMap<String, Integer>();
 		this.the_var = the_var;
 	}
 	
@@ -73,9 +126,9 @@ public class Num {
 	 * n, 
 	 * lo
 	 * hi
-	 * Here I declare a dictionary variable for _has storing the frequency for each numbers may be I am not sure
+	 * Here I declare a dictionary variable for _has stored the frequency for each number may be I am not sure
 	 * There is a object "the" which have a nums dictionary may be different/ similar to the _has 
-	 * According to the declarations of different variables I perform the if else conditions. */	
+	 * According to the declarations of different variables I if-else the if else conditions. */	
 	public void add(String v) {
 		int pos = 0;
 		if (v != "?"){
