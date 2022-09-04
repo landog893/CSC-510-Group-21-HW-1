@@ -119,7 +119,7 @@ public class Num {
 			this.hi = Math.max(vn,this.hi);
 			
 			int size_ = this._has.size();
-			int nums = this.the_var.get("nums");
+			int nums = Integer.parseInt(this.the_var.get("nums"));
 			if (size_ < nums) {
 				pos = 1 + size_;
 			}
