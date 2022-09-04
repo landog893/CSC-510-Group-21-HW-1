@@ -150,5 +150,31 @@ public class Num {
 		}
 		
 	}
+	
+	
+	public double per(List t, float p) {
+	/*
+	  Input:
+	    t: sorted list from this.nums()
+	    p: float number
+	    
+	  output:
+	    k-th element from t
+	    
+	*/
+		int Pnew = Math.floor(p * t.size() + 0.5);
+		
+		return t[Math.max(1, Math.min(t.size(), Pnew))]; 
+	}
+	
+	public static double div() {
+		List a = new this.nums();
+		return (per(a, 0.9) - per(a, 0.1)) / 2.58;
+	}
+	
+	public static double mid() {
+		List a = new this.nums();
+		return per(a, 0.5)
+	}
 
 }
