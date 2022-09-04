@@ -31,9 +31,9 @@ public class Num {
 	private HashMap<String,Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
-	private the the_var;
+	private The the_var;
 	
-	public Num(int n, the the_var){
+	public Num(int n,  HashMap<String,Integer> _has, The the_var){
 		this.n=n;
 		this._has = new HashMap<String, Integer>();
 		this.the_var = the_var;
