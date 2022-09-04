@@ -176,7 +176,7 @@ public class Num {
 	
 	public float mid() {
 		List a = new this.nums();
-		return per(a, 0.5)
+		return per(a, 0.5);
 	}
 
 }
