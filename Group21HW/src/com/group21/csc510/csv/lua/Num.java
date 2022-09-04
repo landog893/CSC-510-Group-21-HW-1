@@ -30,7 +30,7 @@ public class Num {
 	private int n;
 	private String name;
 	private boolean isSorted = true;
-	private HashMap<String,Integer> _has;
+	public HashMap<String,Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
 	private HashMap<String,Integer> the_var;
@@ -151,6 +151,32 @@ public class Num {
 			}
 		}
 		
+	}
+	
+	
+	public float per(List t, float p) {
+	/*
+	  Input:
+	    t: sorted list from this.nums()
+	    p: float number
+	    
+	  output:
+	    k-th element from t
+	    
+	*/
+		int Pnew = Math.floor(p * t.size() + 0.5);
+		
+		return t.get(Math.max(1, Math.min(t.size(), Pnew))); 
+	}
+	
+	public float div() {
+		List a = new this.nums();
+		return (per(a, 0.9) - per(a, 0.1)) / 2.58;
+	}
+	
+	public float mid() {
+		List a = new this.nums();
+		return per(a, 0.5)
 	}
 
 }

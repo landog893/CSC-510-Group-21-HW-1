@@ -6,19 +6,23 @@ import java.util.HashMap;
 
 public class The {
 	
-	private HashMap<String,Integer> nums;
+	public HashMap<String,String> nums;
 	
-	public The(HashMap<String,Integer> nums) {
+	public The(HashMap<String,String> nums) {
 		this.nums=nums;
+	}
+	
+	public The() {
+		this.nums = new HashMap<String,String>();
 	}
 
 	  // Getter
-	  public HashMap<String,Integer> getNums() {
+	  public HashMap<String,String> getNums() {
 	    return nums;
 	  }
 
 	  // Setter
-	  public void setName(HashMap<String,Integer> nums) {
+	  public void setName(HashMap<String,String> nums) {
 	    this.nums = nums;
 	  }
 }
