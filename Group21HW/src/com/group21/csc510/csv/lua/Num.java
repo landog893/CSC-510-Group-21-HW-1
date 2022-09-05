@@ -1,15 +1,9 @@
 package com.group21.csc510.csv.lua;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 
@@ -121,13 +115,15 @@ public class Num {
 			int size_ = this._has.size();
 			int nums = Integer.parseInt(this.the_var.get("nums"));
 			if (size_ < nums) {
-				pos = 1 + size_;
+				pos = size_;
+				this._has.add(pos, vn);
 			}
 			else if (Math.random() < nums *1.0/this.n) {
 				this.isSorted = false;
 				pos = (int) (Math.random() * size_);
-				this._has.add(pos, vn);
+				this._has.set(pos, vn);
 			}
+			
 		}
 		
 	}

@@ -15,28 +15,29 @@ package com.group21.csc510.csv.lua.test;
  *
  */
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import java.util.HashMap;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+//import org.junit.Before;
+//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
 import com.group21.csc510.csv.lua.Num;
-import com.group21.csc510.csv.lua.The;
 import com.group21.csc510.csv.lua.Utility;
 
 class NumTest {
 	
 	private static HashMap<String,String> the;
 	
-	@Before
-	void setup() {
+	@BeforeAll
+	public static void setup() {
 		the = new HashMap<String,String>();
 	}
 	
 	@Test
-	void num() {
+	public void num() {
 		Num num = new Num(the);
 		for(int i = 1; i < 100; i++) {
 			num.add(Integer.toString(i));
@@ -48,13 +49,13 @@ class NumTest {
 	}
 
 	@Test
-	void bigNum() {
+	public void bigNum() {
 		Num num = new Num(the);
 		the.put("nums", "32");
 		for(int i = 1; i < 1000; i++) {
 			num.add(Integer.toString(i));
 		}
 		Utility.oo(the);
-		assertEquals(num._has.size(), 32);
+		assertEquals(32, num._has.size());
 	}
 }

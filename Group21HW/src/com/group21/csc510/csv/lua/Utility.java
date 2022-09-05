@@ -11,6 +11,7 @@ public class Utility {
 		System.out.println(o(t));
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static String o(Object t) {
 		if (!t.getClass().toString().equals("class java.util.HashMap")){
 			return t.toString();
