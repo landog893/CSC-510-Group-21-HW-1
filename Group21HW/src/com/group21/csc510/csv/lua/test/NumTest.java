@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import com.group21.csc510.csv.lua.Num;
 import com.group21.csc510.csv.lua.The;
+import com.group21.csc510.csv.lua.Utility;
 
 class NumTest {
 	

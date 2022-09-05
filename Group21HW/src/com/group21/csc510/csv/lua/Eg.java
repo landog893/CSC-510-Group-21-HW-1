@@ -4,8 +4,6 @@ package com.group21.csc510.csv.lua;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.group21.csc510.csv.lua.test.Utility;
-
 public class Eg {
 
 	public HashMap<String,String> the;
