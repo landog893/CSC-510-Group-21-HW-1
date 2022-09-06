@@ -23,7 +23,7 @@ public class Eg {
 		System.out.println("\n-----------------------------------");
 		sym();
 		num();
-		bigNum();
+		bignum();
 		the();
 	}
 	
@@ -56,7 +56,7 @@ public class Eg {
 		System.out.println( div >= 30.5 && div <= 32);
 	}
 	
-	public void bigNum() {
+	public void bignum() {
 		Num num = new Num(the);
 		the.put("nums", "32");
 		for(int i = 1; i < 1000; i++) {
