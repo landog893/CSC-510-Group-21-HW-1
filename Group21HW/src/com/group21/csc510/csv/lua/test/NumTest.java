@@ -38,6 +38,7 @@ class NumTest {
 	
 	@Test
 	public void num() {
+		the.put("nums", "512");
 		Num num = new Num(the);
 		for(int i = 1; i < 100; i++) {
 			num.add(Integer.toString(i));
