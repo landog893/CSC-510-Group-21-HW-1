@@ -129,31 +129,16 @@ public class Num {
 	}
 	
 	
-	public Integer per(List<Integer> t, double p) {
-	/*
-	  Input:
-	    t: sorted list from this.nums()
-	    p: float number
-	    
-	  output:
-	    k-th element from t
-	    
-	*/
-		double Pnew = Math.floor(p * t.size() + 0.5);
-		double idx = Math.max(1, Math.min(t.size(), Pnew));
-
-		
-		return t.get((int)idx); 
-	}
+	
 	
 	public double div() {
 		List<Integer> a = this.nums();
-		return (per(a, 0.9) - per(a, 0.1)) / 2.58;
+		return (Utility.per(a, 0.9) - Utility.per(a, 0.1)) / 2.58;
 	}
 	
 	public double mid() {
 		List<Integer> a = this.nums();
-		return per(a, 0.5);
+		return Utility.per(a, 0.5);
 	}
 
 }

@@ -35,4 +35,27 @@ public class Utility {
 		}
 		return null;
 	}
+	
+	public static double rnd(double x, int places) {
+		if (places == 0) places = 2;
+		double mult = 10^places;
+		return Math.floor(x*mult + 0.5) / mult;
+	}
+	
+	public static int per(List<Integer> t, double p) {
+		/*
+		  Input:
+		    t: sorted list from this.nums()
+		    p: float number
+		    
+		  output:
+		    k-th element from t
+		    
+		*/
+			double Pnew = Math.floor(p * t.size() + 0.5);
+			double idx = Math.max(1, Math.min(t.size(), Pnew));
+
+			
+			return t.get((int)idx); 
+	}
 }
