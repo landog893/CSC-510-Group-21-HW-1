@@ -29,7 +29,7 @@ public class Data {
 		
 	}
 	
-	private static double mid(List<Integer> col) {
+	private double mid(List<Integer> col) {
 		return Utility.per(col, 0.5);
 	}
 	
