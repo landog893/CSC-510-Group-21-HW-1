@@ -11,22 +11,22 @@ import java.util.Map;
  */
 public class Cols {
 	
-	private HashMap<Integer, String> names;
+	private String[] names;
 	private HashMap<Integer, Object> all;
 	private Object klass;
 	private HashMap<Integer, Object> x; // dependent columns
 	private HashMap<Integer, Object> y; // independent columns
-	
-	public Cols(HashMap<Integer, String> names) {
+
+	public Cols(String[] names) {
 		this.names = names;
 		this.all = new HashMap<Integer, Object>();
 		this.klass = null;
 		this.x = new HashMap<Integer, Object>();
 		this.y = new HashMap<Integer, Object>();
 		
-		for (Map.Entry<Integer, String> entry : this.names.entrySet()) {
-		    int c = entry.getKey();
-		    String s = entry.getValue();
+		for (int i = 0; i < names.length; i++) {
+		    int c = i;
+		    String s = names[i];
 		    
 		    Object col;
 		    // if the first character is uppercase, create a num object
