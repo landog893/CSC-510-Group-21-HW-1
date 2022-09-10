@@ -4,23 +4,55 @@
 package com.group21.csc510.csv.lua;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Shruti Marota
  */
 public class Cols {
 	
-	private HashMap<String, String> names;
-	private HashMap<String, String> all;
-	private String klass;
-	private HashMap<String, String> x; // dependent columns
-	private HashMap<String, String> y; // independent columns
+	private HashMap<Integer, String> names;
+	private HashMap<Integer, Object> all;
+	private Object klass;
+	private HashMap<Integer, Object> x; // dependent columns
+	private HashMap<Integer, Object> y; // independent columns
 	
-	public Cols(HashMap<String, String> names) {
+	public Cols(HashMap<Integer, String> names) {
 		this.names = names;
-		this.all = new HashMap<String, String>();
+		this.all = new HashMap<Integer, Object>();
 		this.klass = null;
-		this.x = new HashMap<String, String>();
-		this.y = new HashMap<String, String>();
+		this.x = new HashMap<Integer, Object>();
+		this.y = new HashMap<Integer, Object>();
+		
+		for (Map.Entry<Integer, String> entry : this.names.entrySet()) {
+		    int c = entry.getKey();
+		    String s = entry.getValue();
+		    
+		    Object col;
+		    // if the first character is uppercase, create a num object
+		    if ( s.matches("^[A-Z]*") ) {
+		    	col = new Num(c, s);
+		    	all.put(c, col);
+		    }
+		    // else create a sym object
+		    else {
+		    	col = new Sym(c, s);
+		    	all.put(c, col);
+		    }
+		    
+		    // check if the column is skipped
+		    if (!s.matches(":$")) {
+		    	// if the col has + or -, its an dependent col
+		    	if (s.matches("[!+-]")) {
+		    		y.put(c, col);
+		    	}
+		    	// otherwise the col is independent
+		    	else {
+		    		x.put(c, col);
+		    	}
+		    }
+		}
 	}
 }
+
+
