@@ -56,17 +56,30 @@ public class Data {
 			Row row = new Row(xs);
 			rows.add(row);
 			for (Object object : cols.x) {
-				entry.getValue().add(row.cells[entry.getValue().at]);
+				if (object instanceof Num) {
+					Num col = (Num)object;
+					col.add(row.cells[col.at]);
+				} else {
+					Sym col = (Sym)object;
+					col.add(row.cells[col.at]);
+				}
+				
 			}
 			for (Object object: cols.y) {
-				entry.getValue().add(row.cells[entry.getValue().at]);
+				if (object instanceof Num) {
+					Num col = (Num)object;
+					col.add(row.cells[col.at]);
+				} else {
+					Sym col = (Sym)object;
+					col.add(row.cells[col.at]);
+				}
 			}
 		}
 		
 		
 	}
 	
-	public HashMap<String, Object> stats(int places, List<List<Integer>> showCols, String fun){
+	public HashMap<String, Object> stats(int places, List<Object> showCols, String fun){
 		if(showCols == null) showCols = cols.y;
 		if(fun == null) fun = "mid";
 		
@@ -78,7 +91,7 @@ public class Data {
 		}
 		
 		HashMap<String, Object> t = new HashMap<>();
-		for (List<Integer> col : showCols) {
+		for (Object col : showCols) {
 			Object v = func.run(col); 
 			v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
 			t.put(col.name, v);
