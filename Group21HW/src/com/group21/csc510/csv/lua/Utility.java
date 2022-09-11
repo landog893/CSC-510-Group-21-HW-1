@@ -3,10 +3,13 @@
  */
 package com.group21.csc510.csv.lua;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Utility {
+public abstract class Utility implements CSVInterface{
+		
 	public static void oo(Object t) {
 		System.out.println(o(t));
 	}
@@ -58,4 +61,30 @@ public class Utility {
 			
 			return t.get((int)idx); 
 	}
+	
+	
+	public static void csv(String fName, CSVInterface i) throws FileNotFoundException {
+		Scanner scanner = null;
+		File file = new File("documents/auto93.csv");
+		scanner = new Scanner(file);
+
+		
+		scanner.useDelimiter("\n");
+		
+		while (scanner.hasNext()) {
+			String s = scanner.next();
+			String[] split = s.split(",");
+			
+			ArrayList<String> t = new ArrayList<String>();
+			for (int x = 0; x < split.length; x++ ) {
+				t.add(split[x]);
+			}
+			
+			i.csvFunction(t);
+		}
+		scanner.close();
+	}
+	
+	
+
 }
