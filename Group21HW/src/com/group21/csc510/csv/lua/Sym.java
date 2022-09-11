@@ -21,7 +21,7 @@ public class Sym {
 	
 	private int n;
 	public int at;
-	private String name;
+	public String name;
 	private HashMap<String,Integer> _has;
 	
 //	function Sym:new(c,s) 

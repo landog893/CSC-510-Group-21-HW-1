@@ -2,12 +2,15 @@ package com.group21.csc510.csv.lua;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 
 public class Data {
-	private Cols cols;
+	public Cols cols;
 	private ArrayList<Row> rows;
 	
 	public static boolean isPathvalid(String path) {
@@ -79,34 +82,64 @@ public class Data {
 		
 	}
 	
-	public HashMap<String, Object> stats(int places, List<Object> showCols, String fun){
+	public HashMap<String, Object> stats(int places, ArrayList<Object> showCols, String fun){
 		if(showCols == null) showCols = cols.y;
-		if(fun == null) fun = "mid";
-		
-		final statFun func;
-		switch(fun) {
-			case("mid"):
-				func = Data :: mid;
-			break;
-		}
 		
 		HashMap<String, Object> t = new HashMap<>();
 		for (Object col : showCols) {
-			Object v = func.run(col); 
-			v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
-			t.put(col.name, v);
+			Object v = null;
+			if(col.getClass().equals(Num.class)){
+				Num castedCol = (Num) col;
+				try {
+					Method func = castedCol.getClass().getMethod(fun, null);
+					try {
+						v = func.invoke(castedCol);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				}
+				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
+				t.put(castedCol.name, v);
+			} else {
+				Sym castedCol = (Sym) col;
+				try {
+					Method func = castedCol.getClass().getMethod(fun, null);
+					try {
+						v = func.invoke(castedCol);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					e.printStackTrace();
+				}
+				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
+				t.put(castedCol.name, v);
+			}
 		}
 		
 		return t;
 		
 	}
 	
-	private static double mid(List<Integer> col) {
-		return Utility.per(col, 0.5);
-	}
 	
-	@FunctionalInterface
-	public interface statFun{
-		Object run(List<Integer> col); 
-	}
 }

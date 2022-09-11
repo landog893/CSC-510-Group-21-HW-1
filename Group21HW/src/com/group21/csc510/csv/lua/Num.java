@@ -23,7 +23,7 @@ import java.util.List;
 public class Num {
 	
 	private int n;
-	private String name;
+	public String name;
 	private boolean isSorted = true;
 	public List<Integer> _has;
 	private int lo = Integer.MAX_VALUE;

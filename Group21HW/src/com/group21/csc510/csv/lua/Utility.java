@@ -12,7 +12,7 @@ public class Utility {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static String o(Object t) {
+	public static String o(Object t) {
 		if (!t.getClass().toString().equals("class java.util.HashMap")){
 			return t.toString();
 		}
