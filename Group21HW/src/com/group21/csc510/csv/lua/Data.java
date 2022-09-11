@@ -55,10 +55,10 @@ public class Data {
 		else {
 			Row row = new Row(xs);
 			rows.add(row);
-			for (Map.Entry<Integer, Object> entry: cols.x.entrySet()) {
+			for (Object object : cols.x) {
 				entry.getValue().add(row.cells[entry.getValue().at]);
 			}
-			for (Map.Entry<Integer, Object> entry: cols.y.entrySet()) {
+			for (Object object: cols.y) {
 				entry.getValue().add(row.cells[entry.getValue().at]);
 			}
 		}

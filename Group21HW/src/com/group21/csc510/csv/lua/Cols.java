@@ -3,6 +3,7 @@
  */
 package com.group21.csc510.csv.lua;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -13,33 +14,15 @@ public class Cols {
 	private String[] names;
 	public HashMap<Integer, Object> all;
 	private Object klass;
-	public HashMap<Integer, Object> x; // dependent columns
-	public HashMap<Integer, Object> y; // independent columns
-
-	
-	public HashMap<Integer, Object> getX() {
-		return x;
-	}
-
-	public void setX(HashMap<Integer, Object> x) {
-		this.x = x;
-	}
-
-	public HashMap<Integer, Object> getY() {
-		return y;
-	}
-
-	public void setY(HashMap<Integer, Object> y) {
-		this.y = y;
-	}
-
+	public ArrayList<Object> x; // dependent columns
+	public ArrayList<Object> y; // independent columns
 
 	public Cols(String[] names) {
 		this.names = names;
 		this.all = new HashMap<Integer, Object>();
 		this.klass = null;
-		this.x = new HashMap<Integer, Object>();
-		this.y = new HashMap<Integer, Object>();
+		this.x = new ArrayList<Object>();
+		this.y = new ArrayList<Object>();
 		
 		for (int i = 0; i < names.length; i++) {
 		    int c = i;
@@ -61,11 +44,11 @@ public class Cols {
 		    if (!s.matches(":$")) {
 		    	// if the col has + or -, its an dependent col
 		    	if (s.matches("[!+-]")) {
-		    		y.put(c, col);
+		    		y.add(col);
 		    	}
 		    	// otherwise the col is independent
 		    	else {
-		    		x.put(c, col);
+		    		x.add(col);
 		    	}
 		    }
 		}
