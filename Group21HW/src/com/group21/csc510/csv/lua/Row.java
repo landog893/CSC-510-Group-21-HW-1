@@ -5,10 +5,10 @@ import java.util.*;
 
 public class Row {
 	HashMap<String, Object> rowBuilder;
-	int[] cells;
-	int[] cooked;
+	String [] cells;
+	String [] cooked;
 	boolean isEvaled;
-	public Row(int[] t){
+	public Row(String [] t){
 		cells = t;
 		cooked = Arrays.copyOf(t,t.length);
 		isEvaled = false;

@@ -15,6 +15,23 @@ public class Cols {
 	private HashMap<Integer, Object> all;
 	private Object klass;
 	private HashMap<Integer, Object> x; // dependent columns
+	
+	public HashMap<Integer, Object> getX() {
+		return x;
+	}
+
+	public void setX(HashMap<Integer, Object> x) {
+		this.x = x;
+	}
+
+	public HashMap<Integer, Object> getY() {
+		return y;
+	}
+
+	public void setY(HashMap<Integer, Object> y) {
+		this.y = y;
+	}
+
 	private HashMap<Integer, Object> y; // independent columns
 
 	public Cols(String[] names) {

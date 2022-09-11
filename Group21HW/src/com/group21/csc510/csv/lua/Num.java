@@ -54,7 +54,7 @@ public class Num {
 	}
 	
 	/**
-	 * Sym constructor with only string
+	 * Num constructor with only string
 	 * @param s String for s 
 	 */
 	public Num(String s,HashMap<String,String> the_var){
@@ -66,7 +66,7 @@ public class Num {
 	}
 	
 	/**
-	 * Sym constructor with only column position
+	 * Num constructor with only column position
 	 * @param c int for column position
 	 */
 	public Num(int c,HashMap<String,String> the_var){
@@ -76,9 +76,20 @@ public class Num {
 		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
 	}
+
+	/**
+	 * Num constructor.
+	 */
+	public Num(int c, String s){
+		this.n = 0;
+		this.at = c; // unsure about at=c or 0
+		this.name = s;
+		this._has= new ArrayList<Integer>();
+		this.the_var = new HashMap<String,String>();
+	}
 	
 	/**
-	 * Sym constructor.
+	 * Num constructor.
 	 */
 	public Num(HashMap<String,String> the_var){
 		this.n = 0;

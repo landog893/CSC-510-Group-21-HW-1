@@ -48,17 +48,15 @@ public class Data {
 		
 	}
 	public void add(String xs,String row) {
+		String [] valueList = row.split(",");
 		if (this.cols == null) {
-			this.cols = Cols(xs);
+			this.cols = new Cols(valueList);
 		}
 		else {
-			Row row_ = Row(xs);
+			Row row_ = new Row(valueList);
 			this.rows.add(row_);
-			for(int i = 0; i < this.cols.y.size(); i++) {
-				ArrayList<Cols> col = this.cols.y.get(i);
-				for (int j = 0, j< col.size(); j++) {
-					// how we will do the polimorphism here
-				}
+			for(Map.Entry<Integer,Object> map: this.cols.getY().entrySet()) {
+				cols = 
 			}
 		}
 		
