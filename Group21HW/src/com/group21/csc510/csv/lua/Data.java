@@ -56,7 +56,7 @@ public class Data {
 			Row row_ = new Row(valueList);
 			this.rows.add(row_);
 			for(Map.Entry<Integer,Object> map: this.cols.getY().entrySet()) {
-				cols = 
+				
 			}
 		}
 		
