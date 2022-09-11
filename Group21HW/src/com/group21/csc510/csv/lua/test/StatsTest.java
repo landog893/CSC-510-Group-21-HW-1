@@ -16,7 +16,7 @@ class StatsTest {
 
 	@Test
 	void test() {
-		Data data = new Data("auto93.csv");
+		Data data = new Data("../data/auto93.csv");
 		Function <List<Integer>, Double> div = col -> (Utility.per(col, 0.9) - Utility.per(col, 0.1)) / 2.58;
 		Function <List<Integer>, Double> mid = col -> (Utility.per(col, 0.5)) / 1.0;
 		System.out.println("xmid", Utility.o(data.stats(2, data.cols.x, mid)));
