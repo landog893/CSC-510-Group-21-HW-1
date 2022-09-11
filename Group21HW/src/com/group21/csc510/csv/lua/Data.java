@@ -47,21 +47,31 @@ public class Data {
 		}
 		
 	}
-	public void add(String xs,String row) {
-		String [] valueList = row.split(",");
-		if (this.cols == null) {
-			this.cols = new Cols(valueList);
+	
+	public void add(String[] xs) {
+		if (cols == null) {
+			cols = new Cols(xs);
 		}
 		else {
+
 			Row row_ = new Row(valueList);
 			this.rows.add(row_);
 			for(Map.Entry<Integer,Object> map: this.cols.getY().entrySet()) {
 				
+
+			Row row = new Row(xs);
+			rows.add(row);
+			for (Map.Entry<Integer, Object> entry: cols.x) {
+				entry.getValue().add(row.cells[entry.getValue().at]);
+			}
+			for (Map.Entry<Integer, Object> entry: cols.y) {
+				entry.getValue().add(row.cells[entry.getValue().at]);
 			}
 		}
 		
 		
 	}
+	
 	public HashMap<String, Object> stats(int places, List<List<Integer>> showCols, String fun){
 		if(showCols == null) showCols = cols.y;
 		if(fun == null) fun = "mid";
