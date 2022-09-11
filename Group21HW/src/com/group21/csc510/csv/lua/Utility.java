@@ -10,8 +10,9 @@ import java.util.stream.Collectors;
 
 public abstract class Utility implements CSVInterface{
 		
-	public static void oo(Object t) {
+	public static String oo(Object t) {
 		System.out.println(o(t));
+		return o(t);
 	}
 	
 	@SuppressWarnings("unchecked")

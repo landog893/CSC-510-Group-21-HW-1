@@ -19,9 +19,22 @@ import com.group21.csc510.csv.lua.Utility;
 class CSVTest {
 	
 	public int n = 0;
+	public String output = "";
 	
 	@Test
-	boolean csvTest() throws FileNotFoundException {
+	void csvTest() throws FileNotFoundException {
+		String expectedOutput = "[Clndrs, Volume, Hp:, Lbs-, Acc+, Model, origin, Mpg+\r"
+				+ "][8, 304, 193, 4732, 18.5, 70, 1, 10\r"
+				+ "][8, 360, 215, 4615, 14, 70, 1, 10\r"
+				+ "][8, 307, 200, 4376, 15, 70, 1, 10\r"
+				+ "][8, 318, 210, 4382, 13.5, 70, 1, 10\r"
+				+ "][8, 429, 208, 4633, 11, 72, 1, 10\r"
+				+ "][8, 400, 150, 4997, 14, 73, 1, 10\r"
+				+ "][8, 350, 180, 3664, 11, 73, 1, 10\r"
+				+ "][8, 383, 180, 4955, 11.5, 71, 1, 10\r"
+				+ "][8, 350, 160, 4456, 13.5, 72, 1, 10\r"
+				+ "]";
+		
 		Utility.csv("documents/auto93.csv", new CSVInterface() {
 			public void csvFunction(Object o) {
 				n++;
@@ -29,12 +42,12 @@ class CSVTest {
 					return;
 				}
 				else {
-					Utility.oo(o);
+					output = output + Utility.oo(o);
 				}
 			}
-		});
+		});	
 		
-		return true;
+		assertEquals(expectedOutput, output);
 	}
 
 

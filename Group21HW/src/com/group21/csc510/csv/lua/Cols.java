@@ -41,10 +41,13 @@ public class Cols {
 		    }
 		    
 		    // check if the column is skipped
-		    if (!s.matches(":$")) {
+		    if (s.charAt(s.length() - 1) != ':') {
 		    	// if the col has + or -, its an dependent col
-		    	if (s.matches("[!+-]")) {
+		    	if (s.charAt(s.length() - 1) == '!' || s.charAt(s.length() - 1) == '-' || s.charAt(s.length() - 1) == '+') {
 		    		y.add(col);
+		    		if (s.charAt(s.length() - 1) == '!') {
+		    			this.klass = col;
+		    		}
 		    	}
 		    	// otherwise the col is independent
 		    	else {
