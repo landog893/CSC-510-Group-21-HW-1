@@ -52,13 +52,7 @@ public class Data {
 		if (cols == null) {
 			cols = new Cols(xs);
 		}
-		else {
-
-			Row row_ = new Row(valueList);
-			this.rows.add(row_);
-			for(Map.Entry<Integer,Object> map: this.cols.getY().entrySet()) {
-				
-
+		else {	
 			Row row = new Row(xs);
 			rows.add(row);
 			for (Map.Entry<Integer, Object> entry: cols.x) {
