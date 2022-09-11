@@ -52,7 +52,7 @@ public class Data {
 		if (cols == null) {
 			cols = new Cols(xs);
 		}
-		else {
+		else {	
 			Row row = new Row(xs);
 			rows.add(row);
 			for (Object object : cols.x) {
