@@ -4,7 +4,6 @@
 package com.group21.csc510.csv.lua;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Shruti Marota
@@ -12,9 +11,11 @@ import java.util.Map;
 public class Cols {
 	
 	private String[] names;
-	private HashMap<Integer, Object> all;
+	public HashMap<Integer, Object> all;
 	private Object klass;
-	private HashMap<Integer, Object> x; // dependent columns
+	public HashMap<Integer, Object> x; // dependent columns
+	public HashMap<Integer, Object> y; // independent columns
+
 	
 	public HashMap<Integer, Object> getX() {
 		return x;
@@ -32,7 +33,6 @@ public class Cols {
 		this.y = y;
 	}
 
-	private HashMap<Integer, Object> y; // independent columns
 
 	public Cols(String[] names) {
 		this.names = names;
