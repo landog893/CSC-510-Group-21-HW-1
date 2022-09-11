@@ -29,7 +29,7 @@ public class Num {
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
 	private HashMap<String,String> the_var;
-	private int at;
+	public int at;
 	
 	/*
 	function Num:new(c,s) 

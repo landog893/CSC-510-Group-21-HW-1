@@ -20,7 +20,7 @@ import java.util.*;
 public class Sym {
 	
 	private int n;
-	private int at;
+	public int at;
 	private String name;
 	private HashMap<String,Integer> _has;
 	
