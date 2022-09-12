@@ -33,7 +33,8 @@ public class Data {
 				Scanner sc = new Scanner(new File((String) src));
 				while(sc.hasNext()) {
 					String row = sc.next();
-					this.add(row);
+					String [] xs = row.split(",");
+					this.add(xs);
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -45,7 +46,8 @@ public class Data {
 			Scanner sc = new Scanner(src);
 			while(sc.hasNext()) {
 				  String row = sc.next();
-				  this.add(row);
+				  String [] xs = row.split(",");
+				  this.add(xs);
 			}
 		}
 		
