@@ -16,9 +16,9 @@ class DataTest {
 
 	@Test
 	void test() {
-		Data d = new Data("..//data//auto93.csv");
-		for (Map.Entry<Integer, Object> col: d.cols.y.entrySet()) {
-			Utility.oo(col.getValue());
+		Data d = new Data("documents/auto93.csv");
+		for (Object col: d.cols.y) {
+			Utility.oo(col);
 		}
 	}
 
