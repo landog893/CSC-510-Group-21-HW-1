@@ -7,29 +7,26 @@ import java.util.*;
  */
 
 /**
- * @author Shruti Marota
- * @author Landon Gaddy
- * @author Jerry Chang
- * @author Jesse Chen
- * @author Sami Islam
+ * This class represents the Sym object. This object represents binary/categorical data in the data set. If a column in the dataset
+ * is lowercase, it is represented by a Sym object. 
  * 
- * Feel free to change author tags if needed
+ * @author Shruti Marota
+ * @author Jesse Chen
  *
  */
 
 public class Sym {
 	
+	/** Private int to represent how many items the Sym object has seen. */
 	private int n;
+	/** Private int to represent the column position. */
 	public int at;
+	/** Private string to represent the column name. */
 	public String name;
+	/** Private HashMap to represent the data the object has kept. */
+	
 	private HashMap<String,Integer> _has;
 	
-//	function Sym:new(c,s) 
-//	  return {n=0,          -- items seen
-//	          at=c or 0,    -- column position
-//	          name=s or "", -- column name
-//	          _has={}       -- kept data
-//	         } end
 	/**
 	 * Sym constructor.
 	 * @param c int for column position
@@ -37,7 +34,7 @@ public class Sym {
 	 */
 	public Sym(int c, String s){
 		this.n = 0;
-		this.at = c; // unsure about at=c or 0
+		this.at = c;
 		this.name = s;
 		this._has= new HashMap<String, Integer>();
 	}
@@ -48,7 +45,7 @@ public class Sym {
 	 */
 	public Sym(String s){
 		this.n = 0;
-		this.at = 0; // unsure about at=c or 0
+		this.at = 0; 
 		this.name = s;
 		this._has= new HashMap<String, Integer>();
 	}
@@ -59,13 +56,13 @@ public class Sym {
 	 */
 	public Sym(int c){
 		this.n = 0;
-		this.at = c; // unsure about at=c or 0
+		this.at = c; 
 		this.name = "";
 		this._has= new HashMap<String, Integer>();
 	}
 	
 	/**
-	 * Sym constructor.
+	 * Sym constructor with no parameters (empty Sym object).
 	 */
 	public Sym(){
 		this.n = 0;
@@ -74,14 +71,9 @@ public class Sym {
 		this._has= new HashMap<String, Integer>();
 	}
 	
-	
-//	  -- ## Sym
-//	  -- Add one thing to `col`. For Num, keep at most `nums` items.
-//	  function Sym:add(v)
-//	    if v~="?" then self.n=self.n+1; self._has[v]= 1+(self._has[v] or 0) end end
 	/**
-	 * Method to add something to col. 
-	 * @param v
+	 * Method to add something to col. If the first letter of the column name is ?, skip the column.
+	 * @param v 
 	 */
 	public void add(String v) {
 		if (!v.equals("?")) {
@@ -98,10 +90,10 @@ public class Sym {
 		}
 	}
 	
-//	  function Sym:mid(col,    most,mode) 
-//	    most=-1; for k,v in pairs(self._has) do if v>most then mode,most=k,v end end
-//	    return mode end 
-		
+	/**
+	 * Method to return the mode of col.
+	 * @return mode of col
+	 */
 	public String mid() {
 		int most = -1;
 		String mode = null;
@@ -116,11 +108,11 @@ public class Sym {
 		}
 		return mode;
 	}
-//	  function Sym:div(    e,fun)
-//	    function fun(p) return p*math.log(p,2) end
-//	    e=0; for _,n in pairs(self._has) do if n>0 then e=e - fun(n/self.n) end end
-//	    return e end 
 
+	/**
+	 * Method to return standard deviation of col. 
+	 * @return standard deviation
+	 */
 	public double div() {
 		double e = 0;
 		for (Map.Entry<String, Integer> entry: this._has.entrySet()) {
@@ -132,6 +124,11 @@ public class Sym {
 		return e;
 	}
 
+	/**
+	 * Helper method to calculate standard deviation. 
+	 * @param n integer to perform log calculation on
+	 * @return output of log calculation
+	 */
 	private double divFun(double n) {
 		return n*(Math.log(n)/ Math.log(2));
 	}
