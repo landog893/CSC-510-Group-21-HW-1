@@ -63,7 +63,12 @@ public abstract class Utility implements CSVInterface{
 			return t.get((int)idx); 
 	}
 	
-	
+	/**
+	 * Method to read the given CSV file and call a specific function given a csv file name
+	 * @param fName file path 
+	 * @param i instance of CSVInterface
+	 * @throws FileNotFoundException
+	 */
 	public static void csv(String fName, CSVInterface i) throws FileNotFoundException {
 		Scanner scanner = null;
 		File file = new File("documents/auto93.csv");
@@ -78,7 +83,8 @@ public abstract class Utility implements CSVInterface{
 			
 			ArrayList<String> t = new ArrayList<String>();
 			for (int x = 0; x < split.length; x++ ) {
-				t.add(split[x]);
+				String currentString = split[x].trim();
+				t.add(currentString);
 			}
 			
 			i.csvFunction(t);

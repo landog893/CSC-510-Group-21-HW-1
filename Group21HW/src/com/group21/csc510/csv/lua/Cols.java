@@ -7,16 +7,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Class to represent the list of columns from the data set and holds summaries of all the columns. 
  * @author Shruti Marota
  */
 public class Cols {
 	
+	/** String list of names of all the columns */
 	private String[] names;
+	/** HashMap of all the columns, including the skipped ones */
 	public HashMap<Integer, Object> all;
+	/** Represents the single dependent klass column (if it exists) */
 	private Object klass;
-	public ArrayList<Object> x; // dependent columns
-	public ArrayList<Object> y; // independent columns
-
+	/** Represents a list of independent columns */
+	public ArrayList<Object> x;
+	/** Represents a list of dependent columns */
+	public ArrayList<Object> y; 
+	
+	/**
+	 * Constructor for the Cols object.
+	 * @param names list of column names
+	 */
 	public Cols(String[] names) {
 		this.names = names;
 		this.all = new HashMap<Integer, Object>();
