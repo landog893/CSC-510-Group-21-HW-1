@@ -19,7 +19,6 @@ import java.util.List;
  * @author Sami Islam
 
  */
-
 public class Num {
 	
 	/** Private int to represent how many items the Num object has seen. */

@@ -18,9 +18,15 @@ import com.group21.csc510.csv.lua.Utility;
  */
 class CSVTest {
 	
+	/** Counter variable **/
 	public int n = 0;
+	/** Output variable **/
 	public String output = "";
 	
+	/**
+	 * Tests the csv functionality
+	 * @throws FileNotFoundException if the file cannot be found
+	 */
 	@Test
 	void csvTest() throws FileNotFoundException {
 		String expectedOutput = "[Clndrs, Volume, Hp:, Lbs-, Acc+, Model, origin, Mpg+"

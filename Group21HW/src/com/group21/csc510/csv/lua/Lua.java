@@ -17,7 +17,8 @@ import java.util.*;
 
 public class Lua {
 	/**
-	 * @param args
+	 * Main method that is called when the program runs and sets up all user provided variables
+	 * @param args the command line arguments passed by the user
 	 */
 	public static void main(String[] args) {
 		HashMap<String,String> the = new HashMap<String,String>();
@@ -62,12 +63,5 @@ public class Lua {
 			Eg eg = new Eg(the);
 			eg.runs();
 		}
-		
-		
 	}
-	
-//	public static void testMethod(Object t) {
-//		System.out.println(t.getClass().toString());
-//	}
-
 }

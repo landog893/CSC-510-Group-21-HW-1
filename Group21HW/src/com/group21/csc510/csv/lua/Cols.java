@@ -34,7 +34,7 @@ public class Cols {
 		this.x = new ArrayList<Object>();
 		this.y = new ArrayList<Object>();
 		
-		for (int i = 0; i < names.length; i++) {
+		for (int i = 0; i < this.names.length; i++) {
 		    int c = i;
 		    String s = names[i];
 		    

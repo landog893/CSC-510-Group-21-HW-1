@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.function.Function;
 
 /**
  * 
@@ -36,7 +35,6 @@ public class Data {
 		try {
 			Paths.get(path);
 		} catch (InvalidPathException e) {
-			// TODO: handle exception
 			return false;
 		}
 		
@@ -48,22 +46,17 @@ public class Data {
 	 * validating the string data and reading data from file or from variable accordingly
 	 * @param src is string containing either path info or rows
 	 */
-	public Data(String src) {
+	public Data(String src) throws FileNotFoundException {
 		
 		this.cols = null;
 		this.rows = new ArrayList<Row>();
 		
 		if(isPathvalid(src)) {
-			try {
-				Scanner sc = new Scanner(new File((String) src));
-				while(sc.hasNext()) {
-					String row = sc.next();
-					String [] xs = row.split(",");
-					this.add(xs);
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
+			Scanner sc = new Scanner(new File((String) src));
+			while(sc.hasNext()) {
+				String row = sc.next();
+				String [] xs = row.split(",");
+				this.add(xs);
 			}
 			
 		}
@@ -74,6 +67,7 @@ public class Data {
 				  String [] xs = row.split(",");
 				  this.add(xs);
 			}
+			sc.close();
 		}
 		
 	}
@@ -149,13 +143,10 @@ public class Data {
 					try {
 						v = func.invoke(castedCol);
 					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IllegalArgumentException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} catch (NoSuchMethodException e) {
