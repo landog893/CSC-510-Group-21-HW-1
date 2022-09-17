@@ -128,18 +128,16 @@ public class Data {
 			if(col.getClass().equals(Num.class)){
 				Num castedCol = (Num) col;
 				try {
-					// calling function from the Num Class
+					// calling function from the Num Class according to the parameter: String fun
 					Method func = castedCol.getClass().getMethod(fun, null);
 					try {
+						// Invoke the corresponding method
 						v = func.invoke(castedCol);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
+					} catch (IllegalAccessException e) {  //Exception handling
 						e.printStackTrace();
 					} catch (IllegalArgumentException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} catch (NoSuchMethodException e) {
@@ -147,7 +145,7 @@ public class Data {
 				} catch (SecurityException e) {
 					e.printStackTrace();
 				}
-				//get v based on the condition applied
+				//get the displaying value of v based on the type of v
 				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
 				t.put(castedCol.name, v);
 			} else {

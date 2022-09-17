@@ -98,10 +98,13 @@ public class Sym {
 		int most = -1;
 		String mode = null;
 		
+		//Iterate the _has HashMap
 		for (Map.Entry<String, Integer> entry : this._has.entrySet()) {
 		    String key = entry.getKey();
 		    Integer value = entry.getValue();
 		    if (value > most) {
+				//Compare the times of each key's occurrences
+				//Find the most frequent key as the mode
 		    	mode = key;
 		    	most = value;
 		    }
@@ -115,6 +118,7 @@ public class Sym {
 	 */
 	public double div() {
 		double e = 0;
+		//Iterate the _has HashMap and calculate the standard deviation of times of occurrences
 		for (Map.Entry<String, Integer> entry: this._has.entrySet()) {
 			int n = entry.getValue();
 			if(n>0) {
