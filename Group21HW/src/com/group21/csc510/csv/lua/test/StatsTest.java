@@ -9,7 +9,11 @@ import com.group21.csc510.csv.lua.Data;
 import com.group21.csc510.csv.lua.Utility;
 
 class StatsTest {
-
+	/**
+	 * Test method
+	 * Reading Data from CSV through Data Object and Computing Median and Standard Deviation through "stats" Function from Data Class
+	 * @Test annotation represents the core test of the data class
+	 */
 	@Test
 	void test() {
 		try {
