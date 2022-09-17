@@ -80,9 +80,11 @@ public class Data {
 		if (cols == null) {
 			cols = new Cols(xs);
 		}
-		else {	
+		else {
+			
 			Row row = new Row(xs);
 			rows.add(row);
+			// iterating indepdent columns to get the add, Num or Sym object tp Col
 			for (Object object : cols.x) {
 				if (object instanceof Num) {
 					Num col = (Num)object;
@@ -93,6 +95,7 @@ public class Data {
 				}
 				
 			}
+			// iterating depedent columns columns to get the add, Num or Sym object tp Col
 			for (Object object: cols.y) {
 				if (object instanceof Num) {
 					Num col = (Num)object;
@@ -107,15 +110,25 @@ public class Data {
 		
 	}
 	
+	/**
+	 * Method to stats something to col. 
+	 * @param places is an integer with a default value 2
+	 * @param showCols is a List of independent or dependent variable of cols.x or cols.y where shoCols default value is cols.x
+	 * @param fun is represents the function we will call here default is "mid"
+	 * @return a HasMap of column names and value
+	 */
+	
 	public HashMap<String, Object> stats(int places, ArrayList<Object> showCols, String fun){
 		if(showCols == null) showCols = cols.y;
 		
 		HashMap<String, Object> t = new HashMap<>();
 		for (Object col : showCols) {
 			Object v = null;
+			// check the type of object getting from showCols
 			if(col.getClass().equals(Num.class)){
 				Num castedCol = (Num) col;
 				try {
+					// calling function from the Num Class
 					Method func = castedCol.getClass().getMethod(fun, null);
 					try {
 						v = func.invoke(castedCol);
@@ -134,9 +147,11 @@ public class Data {
 				} catch (SecurityException e) {
 					e.printStackTrace();
 				}
+				//get v based on the condition applied
 				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
 				t.put(castedCol.name, v);
 			} else {
+				// similar steps from Sym clss
 				Sym castedCol = (Sym) col;
 				try {
 					Method func = castedCol.getClass().getMethod(fun, null);
