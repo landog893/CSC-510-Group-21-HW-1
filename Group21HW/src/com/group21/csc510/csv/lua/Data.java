@@ -129,7 +129,7 @@ public class Data {
 				Num castedCol = (Num) col;
 				try {
 					// calling function from the Num Class according to the parameter: String fun
-					Method func = castedCol.getClass().getMethod(fun, null);
+					Method func = castedCol.getClass().getMethod(fun);
 					try {
 						// Invoke the corresponding method
 						v = func.invoke(castedCol);
@@ -152,7 +152,7 @@ public class Data {
 				// similar steps from Sym clss
 				Sym castedCol = (Sym) col;
 				try {
-					Method func = castedCol.getClass().getMethod(fun, null);
+					Method func = castedCol.getClass().getMethod(fun);
 					try {
 						v = func.invoke(castedCol);
 					} catch (IllegalAccessException e) {

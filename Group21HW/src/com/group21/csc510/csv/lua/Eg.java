@@ -219,8 +219,8 @@ public class Eg {
 			Data data = new Data("documents/auto93.csv");
 			System.out.println("xmid: " + Utility.o(data.stats(2, data.cols.x, "mid")));
 			System.out.println("xdiv: " + Utility.o(data.stats(3, data.cols.x, "div")));
-			System.out.println("ymid:" + Utility.o(data.stats(2, data.cols.y, "mid")));
-			System.out.println("ydiv:" + Utility.o(data.stats(3, data.cols.y, "div")));
+			System.out.println("ymid: " + Utility.o(data.stats(2, data.cols.y, "mid")));
+			System.out.println("ydiv: " + Utility.o(data.stats(3, data.cols.y, "div")));
 			System.out.println("!!!!!!	" + "PASS" + "	stats	" + status);
 		} catch (FileNotFoundException e) {
 			System.out.println("!!!!!!	" + "CRASH" + "	stats	" + status);
