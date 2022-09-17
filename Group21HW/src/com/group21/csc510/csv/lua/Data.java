@@ -9,10 +9,29 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
 
+/**
+ * 
+ */
+
+/**
+ * This class represents the Data object. This object represents the data set. 
+ * @author Saminur Islam
+ * @author Jesse Chen
+ * @author Landon Gaddy
+ * author Jerry Chang
+ */
+
 public class Data {
+	/** public cols to represent Col object to get column information. */
 	public Cols cols;
+	/** private rows to represent a list Row object to store rows from the CSV */
 	private ArrayList<Row> rows;
 	
+	/**
+	 * Method to the type of String value is passed on the constructor.
+	 * param src is string containing either path info or rows
+	 * @return boolean
+	 */
 	public static boolean isPathvalid(String path) {
 		try {
 			Paths.get(path);
@@ -23,6 +42,12 @@ public class Data {
 		
 		return true;
 	}
+	
+	/**
+	 * Data Constructor
+	 * validating the string data and reading data from file or from variable accordingly
+	 * @param src is string containing either path info or rows
+	 */
 	public Data(String src) {
 		
 		this.cols = null;
@@ -53,6 +78,10 @@ public class Data {
 		
 	}
 	
+	/**
+	 * Method to add something to col. 
+	 * @param xs is an array of string containing column values for each row 
+	 */
 	public void add(String[] xs) {
 		if (cols == null) {
 			cols = new Cols(xs);
