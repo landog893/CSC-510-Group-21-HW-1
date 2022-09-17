@@ -55,6 +55,8 @@ public class Lua {
 			}
 			
 		}
+		System.out.println("dsa");
+		System.out.println(the.toString());
 		if(the.get("help").equals("True")) {
 			System.out.println("\n" + help);
 			System.exit(0);

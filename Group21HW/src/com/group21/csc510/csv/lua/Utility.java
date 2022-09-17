@@ -18,6 +18,9 @@ public abstract class Utility implements CSVInterface{
 	@SuppressWarnings("unchecked")
 	public static String o(Object t) {
 		if (!t.getClass().toString().equals("class java.util.HashMap")){
+			if(t.getClass().equals(ArrayList.class)){
+				Collections.sort((ArrayList)t);
+			}
 			return t.toString();
 		}
 		List<String> u = new ArrayList<>();
@@ -27,7 +30,7 @@ public abstract class Utility implements CSVInterface{
 			Object value = entry.getValue();
 			u.add(show(key,value,tCast));
 		}
-		if(tCast.size() == 0) {
+		if(tCast.size() != 0) {
 			Collections.sort(u);
 		}
 		return "{" + u.stream().collect(Collectors.joining("," )) + "}";
@@ -35,7 +38,7 @@ public abstract class Utility implements CSVInterface{
 	
 	private static String show(String k, Object v, HashMap<String,Object> t) {
 		if(k.indexOf("^_")  == -1) {
-			return t.size() == 0 ? String.format(":%s %s",k,v.toString()) : String.valueOf(v);
+			return t.size() != 0 ? String.format(":%s %s",k,v.toString()) : String.valueOf(v);
 		}
 		return null;
 	}

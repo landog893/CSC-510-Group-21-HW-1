@@ -43,7 +43,7 @@ class SymTest {
 		//Construct and display the map for "mid" and "div"
 		Map<String,Object> t = new HashMap<>();
 		t.put("mid", mode);
-		t.put("div", (int)entropy);
+		t.put("div", entropy);
 		Utility.oo(t);
 		//Asserts the value meet the expectation
 		assertEquals(mode, "a");

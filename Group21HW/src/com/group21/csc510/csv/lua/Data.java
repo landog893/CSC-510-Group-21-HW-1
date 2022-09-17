@@ -124,51 +124,34 @@ public class Data {
 		HashMap<String, Object> t = new HashMap<>();
 		for (Object col : showCols) {
 			Object v = null;
-			// check the type of object getting from showCols
-			if(col.getClass().equals(Num.class)){
-				Num castedCol = (Num) col;
+			try {
+				// calling function from the Num or Sym Class
+				//according to the type of instance and the function parameter: String fun
+				Method func = col.getClass().getMethod(fun);
 				try {
-					// calling function from the Num Class according to the parameter: String fun
-					Method func = castedCol.getClass().getMethod(fun);
-					try {
-						// Invoke the corresponding method
-						v = func.invoke(castedCol);
-					} catch (IllegalAccessException e) {  //Exception handling
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-				} catch (NoSuchMethodException e) {
+					// Invoke the corresponding method
+					v = func.invoke(col);
+				} catch (IllegalAccessException e) {  //Exception handling
 					e.printStackTrace();
-				} catch (SecurityException e) {
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
 					e.printStackTrace();
 				}
-				//get the displaying value of v based on the type of v
-				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
-				t.put(castedCol.name, v);
-			} else {
-				// similar steps from Sym clss
-				Sym castedCol = (Sym) col;
-				try {
-					Method func = castedCol.getClass().getMethod(fun);
-					try {
-						v = func.invoke(castedCol);
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-				} catch (NoSuchMethodException e) {
-					e.printStackTrace();
-				} catch (SecurityException e) {
-					e.printStackTrace();
-				}
-				v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
-				t.put(castedCol.name, v);
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				e.printStackTrace();
+			}
+			v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
+			//Check the type of instance and get the name
+			if(col instanceof Num){
+				Num temp = (Num) col;
+				t.put(temp.name, v);
+			}
+			else{
+				Sym temp = (Sym) col;
+				t.put(temp.name, v);
 			}
 		}
 		

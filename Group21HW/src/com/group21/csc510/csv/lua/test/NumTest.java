@@ -40,7 +40,7 @@ class NumTest {
 	public void num() {
 		the.put("nums", "512");
 		Num num = new Num(the);
-		for(int i = 1; i < 100; i++) {
+		for(int i = 0; i < 100; i++) {
 			num.add(Integer.toString(i));
 		}
 		double mid = num.mid();
@@ -53,10 +53,10 @@ class NumTest {
 	public void bigNum() {
 		Num num = new Num(the);
 		the.put("nums", "32");
-		for(int i = 1; i < 1000; i++) {
+		for(int i = 0; i < 1000; i++) {
 			num.add(Integer.toString(i));
 		}
-		Utility.oo(the);
+		Utility.oo(num._has);
 		assertEquals(32, num._has.size());
 	}
 }

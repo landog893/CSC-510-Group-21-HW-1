@@ -64,7 +64,7 @@ public class Eg {
 		data();
 		stats();
 		String msg = globalTest ? "PASS" : "FAIL";
-		System.out.println("!!!!!!	" + msg + "	ALL	" + status);
+		System.out.println("!!!!!!	" + msg + "	ALL	" + globalTest);
 	}
 	
 	/**
@@ -72,6 +72,7 @@ public class Eg {
 	 */
 	public void ls() {
 		System.out.println("\n-----------------------------------");
+		status = true;
 		System.out.println("Examples lua csv -e ...\n"
 				+ "	ALL\n"
 				+ "	LS\n"
@@ -83,6 +84,7 @@ public class Eg {
 				+ "	sym\n"
 				+ "	the\n"
 				+ "!!!!!!	PASS	LS	" + status);
+		if (!status) globalTest = false;
 		
 	}
 	
@@ -101,12 +103,12 @@ public class Eg {
 		symentropy = Math.floor(1000*symentropy)/1000;
 		Map<String,Object> t = new HashMap<>();
 		t.put("mid", symmode);
-		t.put("div", (int)symentropy);
+		t.put("div", symentropy);
 		Utility.oo(t);
-		boolean test = symmode.equals("a") && symentropy >= 1.37 && symentropy <= 1.38;
-		String msg = test ? "PASS" : "FAIL";
+		status = symmode.equals("a") && symentropy >= 1.37 && symentropy <= 1.38;
+		String msg = status ? "PASS" : "FAIL";
 		System.out.println("!!!!!!	" + msg + "	sym	" + status);
-		if (!test) globalTest = false;
+		if (!status) globalTest = false;
 	}
 	
 	/**
@@ -115,16 +117,16 @@ public class Eg {
 	public void num() {
 		System.out.println("\n-----------------------------------");
 		Num num = new Num(the);
-		for(int i = 1; i < 100; i++) {
+		for(int i = 0; i < 100; i++) {
 			num.add(Integer.toString(i));
 		}
 		double mid = num.mid();
 		double div = num.div();
-		boolean test = mid >= 50 && mid <= 100 && div >= 30.5 && div <= 32;
-		String msg = test ? "PASS" : "FAIL";
+		status = mid >= 50 && mid <= 100 && div >= 30.5 && div <= 32;
+		String msg = status ? "PASS" : "FAIL";
 		System.out.println(mid + "	" + div);
 		System.out.println("!!!!!!	" + msg + "	num	" + status);
-		if (!test) globalTest = false;
+		if (!status) globalTest = false;
 	}
 	
 	/**
@@ -134,14 +136,14 @@ public class Eg {
 		System.out.println("\n-----------------------------------");
 		Num num = new Num(the);
 		the.put("nums", "32");
-		for(int i = 1; i < 1000; i++) {
+		for(int i = 0; i < 1000; i++) {
 			num.add(Integer.toString(i));
 		}
-		Utility.oo(num);
-		boolean test = 32 == num._has.size();
-		String msg = test ? "PASS" : "FAIL";
-		System.out.println("!!!!!!	" + test + "	bignum	" + status);
-		if (!test) globalTest = false;
+		Utility.oo(num._has);
+		status = 32 == num._has.size();
+		String msg = status ? "PASS" : "FAIL";
+		System.out.println("!!!!!!	" + msg + "	bignum	" + status);
+		if (!status) globalTest = false;
 	}
 	
 	/**
@@ -150,7 +152,9 @@ public class Eg {
 	public void the() {
 		System.out.println("\n-----------------------------------");
 		Utility.oo(the);
+		status = the != null;
 		System.out.println("!!!!!!	" + "PASS" + "	the	" + status);
+		if (!status) globalTest = false;
 	}
 	
 	/**
@@ -171,24 +175,24 @@ public class Eg {
 				+ "][8, 350, 160, 4456, 13.5, 72, 1, 10"
 				+ "]";
 		try {
-		Utility.csv("documents/auto93.csv", new CSVInterface() {
-			public void csvFunction(Object o) {
-				
-				n++;
-				if (n > 10) {
-					return;
+			Utility.csv("../documents/auto93.csv", new CSVInterface() {
+				public void csvFunction(Object o) {
+					
+					n++;
+					if (n > 10) {
+						return;
+					}
+					else {
+						output = output + Utility.oo(o);
+					}
 				}
-				else {
-					output = output + Utility.oo(o);
-				}
-			}
-		});	
-		boolean test = expectedOutput.equals(output);
-		String msg = test ? "PASS" : "FAIL";
-		System.out.println("!!!!!!	" + msg + "	csv	" + status);
-		if (!test) globalTest = false;
+			});	
+			status = expectedOutput.equals(output);
+			String msg = status ? "PASS" : "FAIL";
+			System.out.println("!!!!!!	" + msg + "	csv	" + status);
+			if (!status) globalTest = false;
 		} catch (FileNotFoundException e){
-			System.out.println("!!!!!!	" + "CRASH" + "	the	" + status);
+			System.out.println("!!!!!!	" + "CRASH" + "	csv	" + status);
 			globalTest = false;
 		}
 	}
@@ -199,15 +203,25 @@ public class Eg {
 	public void data() {
 		System.out.println("\n-----------------------------------");
 		try {
-		Data d = new Data("documents/auto93.csv");
+			Data d = new Data("../documents/auto93.csv");
 			for (Object col: d.cols.y) {
-				Utility.oo(col);
+				if(col instanceof Num){
+					Num temp = (Num) col;
+					Utility.oo(temp._has);
+				}
+				else{
+					Sym temp = (Sym) col;
+					Utility.oo(temp._has);
+				}
 			}
+			status = true;
 			System.out.println("!!!!!!	" + "PASS" + "	data	" + status);
 		} catch (FileNotFoundException e) {
+			status = false;
 			System.out.println("!!!!!!	" + "CRASH" + "	data	" + status);
 			globalTest = false;
 		}
+		if(!status) globalTest = false;
 	}
 	
 	/**
@@ -216,16 +230,19 @@ public class Eg {
 	public void stats() {
 		System.out.println("\n-----------------------------------");
 		try {
-			Data data = new Data("documents/auto93.csv");
+			Data data = new Data("../documents/auto93.csv");
 			System.out.println("xmid: " + Utility.o(data.stats(2, data.cols.x, "mid")));
 			System.out.println("xdiv: " + Utility.o(data.stats(3, data.cols.x, "div")));
 			System.out.println("ymid: " + Utility.o(data.stats(2, data.cols.y, "mid")));
 			System.out.println("ydiv: " + Utility.o(data.stats(3, data.cols.y, "div")));
+			status = true;
 			System.out.println("!!!!!!	" + "PASS" + "	stats	" + status);
 		} catch (FileNotFoundException e) {
+			status = false;
 			System.out.println("!!!!!!	" + "CRASH" + "	stats	" + status);
 			globalTest = false;
 		}
+		if(!status) globalTest = false;
 
 	}
 	

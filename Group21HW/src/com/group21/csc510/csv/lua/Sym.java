@@ -25,7 +25,7 @@ public class Sym {
 	public String name;
 	/** Private HashMap to represent the data the object has kept. */
 	
-	private HashMap<String,Integer> _has;
+	public HashMap<String,Integer> _has;
 	
 	/**
 	 * Sym constructor.
