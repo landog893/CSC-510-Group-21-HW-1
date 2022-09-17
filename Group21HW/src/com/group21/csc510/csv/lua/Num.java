@@ -10,40 +10,38 @@ import java.util.List;
  */
 
 /**
- * @author Shruti Marotta
+ * The Class represents the Num object. This object represents neumerical data in the dataset. If column in the dataset
+ * is uppercase, it is represented by a Num Object.
+ *
  * @author Landon Gaddy
  * @author Jerry Chang
  * @author Jesse Chen
  * @author Sami Islam
- * 
- * Feel free to change author tags if needed
- *
+
  */
 
 public class Num {
 	
+	/** Private int to represent how many items the Num object has seen. */
 	private int n;
+	/** Private string to represent the column name. */
 	public String name;
 	private boolean isSorted = true;
+	/** Private HashMap to represent the data the object has kept. */
 	public List<Integer> _has;
 	private int lo = Integer.MAX_VALUE;
 	private int hi = Integer.MAX_VALUE;
+	/** Private HashMap to represent the data the object contain the options to fulfill functional conditions. */
 	private HashMap<String,String> the_var;
+	/** Private int to represent the column position. */
 	public int at;
 	
-	/*
-	function Num:new(c,s) 
-	  return {n=0,at=c or 0, name=s or "", _has={}, -- as per Sym
-	          lo= math.huge,   -- lowest seen
-	          hi= -math.huge,  -- highest seen
-	          isSorted=true,   -- no updates since the last sort of data
-	          w = ((s or ""):find"-$" and -1 or 1)  
-	         } end*/
 
 	/**
 	 * Num constructor.
 	 * @param c int for column position
 	 * @param s String for s 
+	 * @param the_var hashMap for geting "nums" option
 	 */
 	public Num(int c, String s, HashMap<String,String> the_var){
 		this.n = 0;
@@ -99,7 +97,10 @@ public class Num {
 		this.the_var = the_var;
 	}
 	
-	
+	/**
+	 * Method to return sorted _has. 
+	 * @return _has
+	 */
 	public List<Integer> nums(){
 		 
 		if (!this.isSorted) {
@@ -108,13 +109,14 @@ public class Num {
 		
 		return this._has;
 	}
-	/* Considered v as String type. So, if not "?" then we will consider the next steps for changing values for variable 
+	/**
+	 * Considered v as String type. So, if not "?" then we will consider the next steps for changing values for variable 
 	 * n, 
 	 * lo
 	 * hi
-	 * Here I declare a dictionary variable for _has stored the frequency for each number may be I am not sure
-	 * There is a object "the" which have a nums dictionary may be different/ similar to the _has 
-	 * According to the declarations of different variables I if-else the if else conditions. */	
+	 * Here we declare a dictionary variable for _has stored the frequency for each number 
+	 * There is a hashMap "the" which have a "nums" key to compare with the size of the _has map  
+	 * This method will add neumerical value to columns */	
 	public void add(String v) {
 		int pos = 0;
 		if (v != "?"){
@@ -141,12 +143,18 @@ public class Num {
 	
 	
 	
-	
+	/**
+	 * Method to return standard deviation of col. 
+	 * @return standard deviation
+	 */
 	public double div() {
 		List<Integer> a = this.nums();
 		return (Utility.per(a, 0.9) - Utility.per(a, 0.1)) / 2.58;
 	}
-	
+	/**
+	 * Method to return the mode of col.
+	 * @return mode of col
+	 */
 	public double mid() {
 		List<Integer> a = this.nums();
 		return Utility.per(a, 0.5);
