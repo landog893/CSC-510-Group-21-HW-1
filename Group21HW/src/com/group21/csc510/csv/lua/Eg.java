@@ -192,6 +192,7 @@ public class Eg {
 			System.out.println("!!!!!!	" + msg + "	csv	" + status);
 			if (!status) globalTest = false;
 		} catch (FileNotFoundException e){
+			status = false;
 			System.out.println("!!!!!!	" + "CRASH" + "	csv	" + status);
 			globalTest = false;
 		}

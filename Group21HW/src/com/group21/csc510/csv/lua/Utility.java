@@ -75,7 +75,7 @@ public abstract class Utility implements CSVInterface{
 	 */
 	public static void csv(String fName, CSVInterface i) throws FileNotFoundException {
 		Scanner scanner = null;
-		File file = new File("documents/auto93.csv");
+		File file = new File(fName);
 		scanner = new Scanner(file);
 
 		
