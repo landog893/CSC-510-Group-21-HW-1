@@ -73,7 +73,7 @@ public abstract class Utility implements CSVInterface{
 		return Math.floor(x*mult + 0.5) / mult;
 	}
 	
-	public static int per(List<Integer> t, double p) {
+	public static double per(List<Double> t, double p) {
 		/*
 		  Input:
 		    t: sorted list from this.nums()
