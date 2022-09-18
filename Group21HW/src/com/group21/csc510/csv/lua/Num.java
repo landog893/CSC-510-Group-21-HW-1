@@ -34,6 +34,7 @@ public class Num {
 	public int hi = Integer.MAX_VALUE;
 	/** Private HashMap to represent the data the object contain the options to fulfill functional conditions. */
 	private HashMap<String,String> the_var;
+	
 	/** Private int to represent the column position. */
 	public int at;
 
@@ -128,6 +129,9 @@ public class Num {
 	 * There is a hashMap "the" which have a "nums" key to compare with the size of the _has map  
 	 * This method will add neumerical value to columns */	
 	public void add(String v) {
+		if (the_var.isEmpty() || the_var == null) {
+			the_var.put("nums", "512");
+		}
 		int pos = 0;
 		if (v != "?"){
 			int vn = Integer.parseInt(v);
