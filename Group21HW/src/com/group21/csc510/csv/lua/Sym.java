@@ -18,7 +18,7 @@ import java.util.*;
 public class Sym {
 	
 	/** Private int to represent how many items the Sym object has seen. */
-	private int n;
+	public int n;
 	/** Private int to represent the column position. */
 	public int at;
 	/** Private string to represent the column name. */

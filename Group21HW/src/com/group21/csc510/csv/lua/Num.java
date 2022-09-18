@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -22,18 +24,20 @@ import java.util.List;
 public class Num {
 	
 	/** Private int to represent how many items the Num object has seen. */
-	private int n;
+	public int n;
 	/** Private string to represent the column name. */
 	public String name;
-	private boolean isSorted = true;
+	public boolean isSorted = true;
 	/** Private HashMap to represent the data the object has kept. */
 	public List<Integer> _has;
-	private int lo = Integer.MAX_VALUE;
-	private int hi = Integer.MAX_VALUE;
+	public int lo = Integer.MAX_VALUE;
+	public int hi = Integer.MAX_VALUE;
 	/** Private HashMap to represent the data the object contain the options to fulfill functional conditions. */
 	private HashMap<String,String> the_var;
 	/** Private int to represent the column position. */
 	public int at;
+
+	public int w = 1;
 	
 
 	/**
@@ -60,6 +64,13 @@ public class Num {
 		this.name = s;
 		this._has= new ArrayList<Integer>();
 		this.the_var = the_var;
+
+		String patternStr = "-$";
+		Pattern pattern = Pattern.compile(patternStr);
+		Matcher matcher = pattern.matcher(s);
+		if(matcher.find()){
+			this.w = -1;
+		}
 	}
 	
 	/**

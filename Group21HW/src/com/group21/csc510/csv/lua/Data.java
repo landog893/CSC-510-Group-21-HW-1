@@ -81,7 +81,6 @@ public class Data {
 			cols = new Cols(xs);
 		}
 		else {
-			
 			Row row = new Row(xs);
 			rows.add(row);
 			// iterating indepdent columns to get the add, Num or Sym object tp Col
@@ -106,7 +105,7 @@ public class Data {
 				}
 			}
 		}
-		
+
 		
 	}
 	
@@ -119,14 +118,15 @@ public class Data {
 	 */
 	
 	public HashMap<String, Object> stats(int places, ArrayList<Object> showCols, String fun){
-		if(showCols == null) showCols = cols.y;
+		if(showCols == null) {
+			showCols = cols.y;
+		}
 		
 		HashMap<String, Object> t = new HashMap<>();
 		for (Object col : showCols) {
 			Object v = null;
 			try {
-				// calling function from the Num or Sym Class
-				//according to the type of instance and the function parameter: String fun
+				// calling function from the Num Class according to the parameter: String fun
 				Method func = col.getClass().getMethod(fun);
 				try {
 					// Invoke the corresponding method

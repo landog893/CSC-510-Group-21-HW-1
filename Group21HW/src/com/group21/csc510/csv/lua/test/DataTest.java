@@ -35,14 +35,7 @@ class DataTest {
 		try {
 			Data d = new Data("documents/auto93.csv");
 				for (Object col: d.cols.y) {
-					if(col instanceof Num){
-						Num temp = (Num) col;
-						Utility.oo(temp._has);
-					}
-					else{
-						Sym temp = (Sym) col;
-						Utility.oo(temp._has);
-					}
+					Utility.oo(col);
 				}
 				assertTrue(true);
 			} catch (FileNotFoundException e) {
