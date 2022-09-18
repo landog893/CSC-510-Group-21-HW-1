@@ -57,9 +57,7 @@ public abstract class Utility implements CSVInterface{
 				Collections.sort((ArrayList)t);
 			}
 			return t.toString();
-		}
-		
-		
+		}		
 	}
 	
 	private static String show(String k, Object v, HashMap<String,Object> t) {
@@ -122,6 +120,55 @@ public abstract class Utility implements CSVInterface{
 		scanner.close();
 	}
 	
+	
+	public static String unsortedOO(Object t) {
+		System.out.println(unsortedO(t));
+		return unsortedO(t);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static String unsortedO(Object t) {
+		if (t.getClass().toString().equals("class java.util.HashMap")
+			||t instanceof Sym
+			||t instanceof Num){
+			
+			List<String> u = new ArrayList<>();
+			HashMap<String, Object> tCast = new HashMap<>();
+			if(t instanceof Num) {
+				Num temp = (Num) t;
+				tCast.put("at", temp.at);
+				tCast.put("hi", temp.hi);
+				tCast.put("isSorted", temp.isSorted);
+				tCast.put("lo", temp.lo);
+				tCast.put("n", temp.n);
+				tCast.put("name", temp.name);
+				tCast.put("w", temp.w);
+			}
+			else if (t instanceof Sym) {
+				Sym temp = (Sym) t;
+				tCast.put("at", temp.at);
+				tCast.put("n", temp.n);
+				tCast.put("name", temp.name);
+			}
+			else {
+				tCast = (HashMap<String, Object>) t;
+			}
+			for (Map.Entry<String, Object> entry: tCast.entrySet()) {
+				String key = (String) entry.getKey();
+				Object value = entry.getValue();
+				u.add(show(key,value,tCast));
+			}
+			if(tCast.size() != 0) {
+				Collections.sort(u);
+			}
+			return "{" + u.stream().collect(Collectors.joining("," )) + "}";
+		}
+		else {
+			return t.toString();
+		}
+		
+		
+	}
 	
 
 }
