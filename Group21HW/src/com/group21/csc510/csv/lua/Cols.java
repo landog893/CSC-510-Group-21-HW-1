@@ -40,7 +40,7 @@ public class Cols {
 		    
 		    Object col;
 		    // if the first character is uppercase, create a num object
-		    if ( s.matches("^[A-Z]*") ) {
+		    if ( Character.isUpperCase(s.charAt(0)) == true) {
 		    	col = new Num(c, s);
 		    	all.put(c, col);
 		    }
