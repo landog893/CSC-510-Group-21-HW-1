@@ -29,9 +29,9 @@ public class Num {
 	public String name;
 	public boolean isSorted = true;
 	/** Private HashMap to represent the data the object has kept. */
-	public List<Integer> _has;
-	public int lo = Integer.MAX_VALUE;
-	public int hi = Integer.MAX_VALUE;
+	public List<Double> _has;
+	public double lo = Integer.MAX_VALUE;
+	public double hi = Integer.MAX_VALUE;
 	/** Private HashMap to represent the data the object contain the options to fulfill functional conditions. */
 	private HashMap<String,String> the_var;
 	
@@ -51,7 +51,7 @@ public class Num {
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = s;
-		this._has= new ArrayList<Integer>();
+		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
 	}
 	
@@ -63,7 +63,7 @@ public class Num {
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = s;
-		this._has= new ArrayList<Integer>();
+		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
 
 		String patternStr = "-$";
@@ -82,7 +82,7 @@ public class Num {
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = "";
-		this._has= new ArrayList<Integer>();
+		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
 	}
 
@@ -93,7 +93,7 @@ public class Num {
 		this.n = 0;
 		this.at = c; // unsure about at=c or 0
 		this.name = s;
-		this._has= new ArrayList<Integer>();
+		this._has= new ArrayList<Double>();
 		this.the_var = new HashMap<String,String>();
 	}
 	
@@ -104,7 +104,7 @@ public class Num {
 		this.n = 0;
 		this.at = 0; // unsure about at=c or 0
 		this.name = "";
-		this._has= new ArrayList<Integer>();
+		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
 	}
 	
@@ -112,7 +112,7 @@ public class Num {
 	 * Method to return sorted _has. 
 	 * @return _has
 	 */
-	public List<Integer> nums(){
+	public List<Double> nums(){
 		 
 		if (!this.isSorted) {
 			 this._has.sort(Comparator.naturalOrder());
@@ -134,7 +134,7 @@ public class Num {
 		}
 		int pos = 0;
 		if (v != "?"){
-			int vn = Integer.parseInt(v);
+			double vn = Double.parseDouble(v);
 			this.n = this.n + 1;			
 			this.lo = Math.min(vn, this.lo);
 			this.hi = Math.max(vn,this.hi);
@@ -162,7 +162,7 @@ public class Num {
 	 * @return standard deviation
 	 */
 	public double div() {
-		List<Integer> a = this.nums();
+		List<Double> a = this.nums();
 		return (Utility.per(a, 0.9) - Utility.per(a, 0.1)) / 2.58;
 	}
 	/**
@@ -170,7 +170,7 @@ public class Num {
 	 * @return mode of col
 	 */
 	public double mid() {
-		List<Integer> a = this.nums();
+		List<Double> a = this.nums();
 		return Utility.per(a, 0.5);
 	}
 
