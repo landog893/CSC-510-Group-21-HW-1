@@ -19,6 +19,6 @@ jobs:
           java-version: 11
           
       - run: |
-          echo "$pwd"
+          pwd
           javac *.java
           java -Xmx100m com.group21.csc510.csv.lua.Lua -e ALL
