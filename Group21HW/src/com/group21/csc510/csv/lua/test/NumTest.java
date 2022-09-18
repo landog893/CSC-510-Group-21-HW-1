@@ -41,7 +41,7 @@ class NumTest {
 		the.put("nums", "512");
 		Num num = new Num(the);
 		for(int i = 0; i < 100; i++) {
-			num.add(Integer.toString(i));
+			num.add(Double.toString(i));
 		}
 		double mid = num.mid();
 		double div = num.div();
@@ -54,7 +54,7 @@ class NumTest {
 		Num num = new Num(the);
 		the.put("nums", "32");
 		for(int i = 0; i < 1000; i++) {
-			num.add(Integer.toString(i));
+			num.add(Double.toString(i));
 		}
 		Utility.oo(num._has);
 		assertEquals(32, num._has.size());
