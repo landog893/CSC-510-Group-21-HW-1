@@ -206,14 +206,7 @@ public class Eg {
 		try {
 			Data d = new Data("../documents/auto93.csv");
 			for (Object col: d.cols.y) {
-				if(col instanceof Num){
-					Num temp = (Num) col;
-					Utility.oo(temp._has);
-				}
-				else{
-					Sym temp = (Sym) col;
-					Utility.oo(temp._has);
-				}
+				Utility.oo(col);
 			}
 			status = true;
 			System.out.println("!!!!!!	" + "PASS" + "	data	" + status);
