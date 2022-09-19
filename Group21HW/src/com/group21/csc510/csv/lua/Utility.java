@@ -69,8 +69,9 @@ public abstract class Utility implements CSVInterface{
 	
 	public static double rnd(double x, int places) {
 		if (places == 0) places = 2;
-		double mult = 10^places;
-		return Math.floor(x*mult + 0.5) / mult;
+		double mult = Math.pow(10, places);
+		int floored = (int)Math.floor(x*mult + 0.5);
+		return (double) floored / mult;
 	}
 	
 	public static double per(List<Double> t, double p) {

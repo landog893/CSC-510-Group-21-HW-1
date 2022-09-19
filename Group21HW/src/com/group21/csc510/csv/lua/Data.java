@@ -143,7 +143,8 @@ public class Data {
 			} catch (SecurityException e) {
 				e.printStackTrace();
 			}
-			v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, 2) : v;
+			if(v.getClass().equals(String.class)) v = Double.parseDouble((String)v);
+			v = v.getClass().equals(Double.class) ? Utility.rnd((double)v, places) : v;
 			//Check the type of instance and get the name
 			if(col instanceof Num){
 				Num temp = (Num) col;
