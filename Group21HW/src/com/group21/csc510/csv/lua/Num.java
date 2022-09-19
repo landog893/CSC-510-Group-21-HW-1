@@ -30,8 +30,8 @@ public class Num {
 	public boolean isSorted = true;
 	/** Private HashMap to represent the data the object has kept. */
 	public List<Double> _has;
-	public double lo = Integer.MAX_VALUE;
-	public double hi = Integer.MAX_VALUE;
+	public int lo = Integer.MAX_VALUE;
+	public int hi = Integer.MIN_VALUE;
 	/** Private HashMap to represent the data the object contain the options to fulfill functional conditions. */
 	private HashMap<String,String> the_var;
 	
@@ -53,6 +53,7 @@ public class Num {
 		this.name = s;
 		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
+		this.match(s);
 	}
 	
 	/**
@@ -65,13 +66,9 @@ public class Num {
 		this.name = s;
 		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
+		this.match(s);
 
-		String patternStr = "-$";
-		Pattern pattern = Pattern.compile(patternStr);
-		Matcher matcher = pattern.matcher(s);
-		if(matcher.find()){
-			this.w = -1;
-		}
+		
 	}
 	
 	/**
@@ -95,6 +92,7 @@ public class Num {
 		this.name = s;
 		this._has= new ArrayList<Double>();
 		this.the_var = new HashMap<String,String>();
+		this.match(s);
 	}
 	
 	/**
@@ -106,6 +104,15 @@ public class Num {
 		this.name = "";
 		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
+	}
+	
+	private void match(String s) {
+		String patternStr = "-$";
+		Pattern pattern = Pattern.compile(patternStr);
+		Matcher matcher = pattern.matcher(s);
+		if(matcher.find()){
+			this.w = -1;
+		}
 	}
 	
 	/**
@@ -136,8 +143,8 @@ public class Num {
 		if (v != "?"){
 			double vn = Double.parseDouble(v);
 			this.n = this.n + 1;			
-			this.lo = Math.min(vn, this.lo);
-			this.hi = Math.max(vn,this.hi);
+			this.lo = Math.min((int)vn, this.lo);
+			this.hi = Math.max((int)vn,this.hi);
 			
 			int size_ = this._has.size();
 			int nums = Integer.parseInt(this.the_var.get("nums"));
