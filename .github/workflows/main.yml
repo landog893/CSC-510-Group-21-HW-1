@@ -18,8 +18,8 @@ jobs:
         with:
           java-version: 11
           
-      - run: |
-          pwd
+      - name: View test results
+        run: |
           cd ./Group21HW/src/com/group21/csc510/csv/lua
           javac *.java
           cd ..
@@ -27,5 +27,4 @@ jobs:
           cd ..
           cd ..
           cd ..
-          pwd
           java -Xmx100m com.group21.csc510.csv.lua.Lua -e ALL
