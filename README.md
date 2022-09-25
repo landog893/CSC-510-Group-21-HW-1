@@ -18,3 +18,11 @@ HW for group 21 in CSC 510
 1. Clone the repo
 2. Run Install.exe
 3. Accept all Term and Conditions
+
+## Viewing Tests
+
+In order to view unit tests, do the following:
+1. Click on the build badge (or navigate to Actions -> Build Workflow).  
+2. Click on the latest workflow run.
+3. Click on the "run_tests" job. 
+4. Click on the "View test results" step. 
