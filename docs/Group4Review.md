@@ -23,9 +23,9 @@ Respository being reviewed: https://github.com/team-12-csc-510/hw2
 |Other automated analysis tools| 0 | Not present. |
 |Test cases exist (dozens of tests and those test cases are more than 30% of the code base)| 3 | Exist in test folder. 
 |Test cases are routinely executed (E.g. travis-com.com or github actions or something) | 3 | https://github.com/team-12-csc-510/hw2/actions/workflows/main.yml|
-|The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|
+|The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up| 0 | File is empty. https://github.com/team-12-csc-510/hw2/blob/main/CONTRIBUTING.md |
 |Issues are discussed before they are closed (even if you discuss in slack, need a sumamry statement here) | 0 | Not present. |
-|Chat channel: exists|Link or screenshots| 0 | Not present. |
+|Chat channel: exists (Link or screenshots)| 0 | Not present. |
 |Test cases: a large proportion of the issues related to handling failing cases.(If a test case fails, open an issue and fix it) | 0 | Not present. |
 |Evidence that the whole team is using the same tools: everyone can get to all tools and files| 3 | Seems that there weren't any issues. |
 |Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)| 3 | Seems that there weren't any issues. |
