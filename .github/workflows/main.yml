@@ -18,14 +18,6 @@ jobs:
         with:
           java-version: 11
           
-      - name: Deploy JavaDoc 🚀
-        uses: MathieuSoysal/Javadoc-publisher.yml@v2.0.4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          javadoc-branch: javadoc
-          java-version: 11
-          target-folder: javadoc 
-          
       - name: View test results
         run: |
           cd ./Group21HW/src/com/group21/csc510/csv/lua
