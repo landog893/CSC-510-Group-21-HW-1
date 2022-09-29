@@ -16,9 +16,9 @@ Respository being reviewed: https://github.com/team-12-csc-510/hw2
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing| 0 | Not present. |
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.| 0 | Not present. |
 |Use of version control tools| 3 | Used Git. |
-|Use of style checkers | 3 | https://github.com/team-12-csc-510/hw2/blob/main/.pre-commit-config.yaml |
-|Use of code formatters. | 3 | https://github.com/team-12-csc-510/hw2/blob/main/.pre-commit-config.yaml |
-|Use of syntax checkers. | 3 | https://github.com/team-12-csc-510/hw2/blob/main/.pre-commit-config.yaml |
+|Use of style checkers | 0 | Not present. |
+|Use of code formatters. | 0 | Not present. |
+|Use of syntax checkers. | 0 | Not present. |
 |Use of code coverage | 3 | https://app.codecov.io/gh/team-12-csc-510/hw2 |
 |Other automated analysis tools| 0 | Not present. |
 |Test cases exist (dozens of tests and those test cases are more than 30% of the code base)| 3 | Exist in test folder. 
