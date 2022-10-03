@@ -11,7 +11,6 @@ import java.util.*;
  * @author Jesse Chen
  * @author Sami Islam
  * 
- * Feel free to change author tags if needed
  *
  */
 

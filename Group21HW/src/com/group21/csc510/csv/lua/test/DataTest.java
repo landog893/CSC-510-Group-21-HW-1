@@ -1,8 +1,6 @@
 package com.group21.csc510.csv.lua.test;
 
 import com.group21.csc510.csv.lua.Data;
-import com.group21.csc510.csv.lua.Num;
-import com.group21.csc510.csv.lua.Sym;
 import com.group21.csc510.csv.lua.Utility;
 
 import static org.junit.Assert.assertTrue;

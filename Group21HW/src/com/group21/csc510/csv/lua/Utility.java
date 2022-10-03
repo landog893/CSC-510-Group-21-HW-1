@@ -25,7 +25,7 @@ public abstract class Utility implements CSVInterface{
 	 * @param t the object to be displayed
 	 * @return String
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static String o(Object t) {
 		if (t.getClass().toString().equals("class java.util.HashMap")
 			||t instanceof Sym
