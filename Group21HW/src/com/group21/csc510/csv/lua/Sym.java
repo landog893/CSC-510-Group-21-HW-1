@@ -73,7 +73,7 @@ public class Sym {
 	
 	/**
 	 * Method to add something to col. If the first letter of the column name is ?, skip the column.
-	 * @param v 
+	 * @param v the value to add
 	 */
 	public void add(String v) {
 		if (!v.equals("?")) {

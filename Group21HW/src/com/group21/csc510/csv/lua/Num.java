@@ -59,6 +59,7 @@ public class Num {
 	/**
 	 * Num constructor with only string
 	 * @param s String for s 
+	 * @param the_var the setting parameters
 	 */
 	public Num(String s,HashMap<String,String> the_var){
 		this.n = 0;
@@ -74,6 +75,7 @@ public class Num {
 	/**
 	 * Num constructor with only column position
 	 * @param c int for column position
+	 * @param the_var the setting parameters
 	 */
 	public Num(int c,HashMap<String,String> the_var){
 		this.n = 0;
@@ -85,6 +87,8 @@ public class Num {
 
 	/**
 	 * Num constructor.
+	 * @param c int for column position
+	 * @param s the value to add
 	 */
 	public Num(int c, String s){
 		this.n = 0;
@@ -97,6 +101,7 @@ public class Num {
 	
 	/**
 	 * Num constructor.
+	 * @param the_var the setting parameters
 	 */
 	public Num(HashMap<String,String> the_var){
 		this.n = 0;
@@ -105,7 +110,11 @@ public class Num {
 		this._has= new ArrayList<Double>();
 		this.the_var = the_var;
 	}
-	
+
+	/**
+	 * Method for regex matching.
+	 * @param s the string to be matched
+	 */
 	private void match(String s) {
 		String patternStr = "-$";
 		Pattern pattern = Pattern.compile(patternStr);
@@ -134,7 +143,9 @@ public class Num {
 	 * hi
 	 * Here we declare a dictionary variable for _has stored the frequency for each number 
 	 * There is a hashMap "the" which have a "nums" key to compare with the size of the _has map  
-	 * This method will add neumerical value to columns */	
+	 * This method will add neumerical value to columns 
+	 * @param v the value to add
+	*/	
 	public void add(String v) {
 		if (the_var.isEmpty() || the_var == null) {
 			the_var.put("nums", "512");

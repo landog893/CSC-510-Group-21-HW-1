@@ -9,20 +9,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public abstract class Utility implements CSVInterface{
-	
 	/**
-	 * Generates a string from the a dictionary type data by formating and into a readable string.
-	 * @param t is a type of object .. most likely it would be a HashMap
-	 * @return a String
+	 * Method to print out objects
+	 * @param t the object to be displayed
+	 * @return void
 	 */
 	public static String oo(Object t) {
 		System.out.println(o(t));
 		return o(t);
 	}
-  	/**
-	 * Generates a string from the a dictionary type data by formating and into a readable string.
-	 * @param t is a type of object .. most likely it would be a HashMap
-	 * @return return a string
+
+
+	/**
+	 * Method to transform objects to strings
+	 * @param t the object to be displayed
+	 * @return String
 	 */
 	@SuppressWarnings("unchecked")
 	public static String o(Object t) {
@@ -70,11 +71,10 @@ public abstract class Utility implements CSVInterface{
 	}
 	
 	/**
-	 * Generates a string from the a dictionary type data by formating and into a readable string.
-	 * @param k is a type of String .. is the key from HashMap
-	 * @param v is a type of object .. mrepresenting the value from the HashMap
-	 * @param t is a type of object .. a HashMap of different options
-	 * @return a string 
+	 * Helper Method to change HashMap to String
+	 * @param k the key of the HashMap
+	 * @param v the value of the HashMap
+	 * @return String
 	 */
 	private static String show(String k, Object v, HashMap<String,Object> t) {
 		if(k.indexOf("^_")  == -1) {
@@ -82,7 +82,13 @@ public abstract class Utility implements CSVInterface{
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Method to round up a double number
+	 * @param x the double value
+	 * @param places the places of digits
+	 * @return double
+	 */
 	public static double rnd(double x, int places) {
 		if (places == 0) places = 2;
 		double mult = Math.pow(10, places);
@@ -97,7 +103,7 @@ public abstract class Utility implements CSVInterface{
 	 * @return k-th element from t
 	 **/
 	public static double per(List<Double> t, double p) {
-		
+		    
 			double Pnew = Math.floor(p * t.size() + 0.5);
 			double idx = Math.max(1, Math.min(t.size(), Pnew));
 
@@ -110,7 +116,7 @@ public abstract class Utility implements CSVInterface{
 	 * 
 	 * @param fName file path 
 	 * @param i instance of CSVInterface
-	 * @throws FileNotFoundException
+	 * @throws FileNotFoundException when fail to read files
 	 */
 	public static void csv(String fName, CSVInterface i) throws FileNotFoundException {
 		Scanner scanner = null;
@@ -136,21 +142,19 @@ public abstract class Utility implements CSVInterface{
 	}
 	
 	/**
-	 * Generates a string from the a dictionary type data by formating and into a readable string.
-	 * But in unsorted case
-	 * @param t is a type of object .. most likely it would be a HashMap
-	 * @return a String
+	 * Method to print out objects in unsorted way
+	 * @param t the object to be displayed
+	 * @return void
 	 */
 	public static String unsortedOO(Object t) {
 		System.out.println(unsortedO(t));
 		return unsortedO(t);
 	}
-	
+
 	/**
-	 * Generates a string from the a dictionary type data by formating and into a readable string.
-	 * but in unsorted case
-	 * @param t is a type of object .. most likely it would be a HashMap
-	 * @return return a string
+	 * Method to transform objects to strings in unsorted way
+	 * @param t the object to be displayed
+	 * @return String
 	 */
 	@SuppressWarnings("unchecked")
 	public static String unsortedO(Object t) {

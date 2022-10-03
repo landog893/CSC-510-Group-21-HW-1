@@ -28,7 +28,7 @@ public class Data {
 	
 	/**
 	 * Method to the type of String value is passed on the constructor.
-	 * param src is string containing either path info or rows
+	 * @param path string containing either path info or rows
 	 * @return boolean
 	 */
 	public static boolean isPathvalid(String path) {
@@ -45,6 +45,7 @@ public class Data {
 	 * Data Constructor
 	 * validating the string data and reading data from file or from variable accordingly
 	 * @param src is string containing either path info or rows
+	 * @throws FileNotFoundException throw exception when fail to read files
 	 */
 	public Data(String src) throws FileNotFoundException {
 		
