@@ -9,12 +9,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public abstract class Utility implements CSVInterface{
-		
+	
+	/**
+	 * Generates a string from the a dictionary type data by formating and into a readable string.
+	 * @param t is a type of object .. most likely it would be a HashMap
+	 * @return a String
+	 */
 	public static String oo(Object t) {
 		System.out.println(o(t));
 		return o(t);
 	}
-	
+  	/**
+	 * Generates a string from the a dictionary type data by formating and into a readable string.
+	 * @param t is a type of object .. most likely it would be a HashMap
+	 * @return return a string
+	 */
 	@SuppressWarnings("unchecked")
 	public static String o(Object t) {
 		if (t.getClass().toString().equals("class java.util.HashMap")
@@ -60,6 +69,13 @@ public abstract class Utility implements CSVInterface{
 		}		
 	}
 	
+	/**
+	 * Generates a string from the a dictionary type data by formating and into a readable string.
+	 * @param k is a type of String .. is the key from HashMap
+	 * @param v is a type of object .. mrepresenting the value from the HashMap
+	 * @param t is a type of object .. a HashMap of different options
+	 * @return a string 
+	 */
 	private static String show(String k, Object v, HashMap<String,Object> t) {
 		if(k.indexOf("^_")  == -1) {
 			return t.size() != 0 ? String.format(":%s %s",k,v.toString()) : String.valueOf(v);
@@ -74,16 +90,14 @@ public abstract class Utility implements CSVInterface{
 		return (double) floored / mult;
 	}
 	
+	/**
+	 * This fountion is working with the sored list
+	 * @param t: sorted list from this.nums()
+	 * @param p: float number
+	 * @return k-th element from t
+	 **/
 	public static double per(List<Double> t, double p) {
-		/*
-		  Input:
-		    t: sorted list from this.nums()
-		    p: float number
-		    
-		  output:
-		    k-th element from t
-		    
-		*/
+		
 			double Pnew = Math.floor(p * t.size() + 0.5);
 			double idx = Math.max(1, Math.min(t.size(), Pnew));
 
@@ -121,12 +135,23 @@ public abstract class Utility implements CSVInterface{
 		scanner.close();
 	}
 	
-	
+	/**
+	 * Generates a string from the a dictionary type data by formating and into a readable string.
+	 * But in unsorted case
+	 * @param t is a type of object .. most likely it would be a HashMap
+	 * @return a String
+	 */
 	public static String unsortedOO(Object t) {
 		System.out.println(unsortedO(t));
 		return unsortedO(t);
 	}
 	
+	/**
+	 * Generates a string from the a dictionary type data by formating and into a readable string.
+	 * but in unsorted case
+	 * @param t is a type of object .. most likely it would be a HashMap
+	 * @return return a string
+	 */
 	@SuppressWarnings("unchecked")
 	public static String unsortedO(Object t) {
 		if (t.getClass().toString().equals("class java.util.HashMap")
