@@ -31,4 +31,4 @@ jobs:
           
       - name: Regenerate JavaDoc
         run: |
-          javadoc -d ./Group21Hw/javadoc -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
+          javadoc -d ./Group21HW/javadoc -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
