@@ -24,7 +24,7 @@ class CSVTest {
 	public String output = "";
 	
 	/**
-	 * Tests the csv functionality
+	 * Tests the CSV functionality
 	 * @throws FileNotFoundException if the file cannot be found
 	 */
 	@Test
