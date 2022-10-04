@@ -1,5 +1,8 @@
 name: Build Workflow
-on: push
+on: 
+  push:
+    branches:
+      - main
 jobs:
   build:
     name: Build job
@@ -31,4 +34,12 @@ jobs:
           
       - name: Regenerate JavaDoc
         run: |
-          javadoc -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
+          git checkout -b javadoc
+          javadoc -d ./javadoc -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
+          cd ./javadoc
+          git add ./javadoc/.
+          git status
+          git commit -am "Regenerating javadoc"
+          git push
+          
+
