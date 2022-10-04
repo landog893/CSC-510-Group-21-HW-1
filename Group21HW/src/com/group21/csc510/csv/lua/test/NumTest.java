@@ -36,6 +36,11 @@ class NumTest {
 		the = new HashMap<String,String>();
 	}
 	
+	/**
+	 * Test method
+	 * Compute mid and div through Num object. Mid value has to between 50 and 100 and div value has to between 30.5 and 32.
+	 * @Test annotation represents the mid and div test of the Num class.
+	 */
 	@Test
 	public void num() {
 		the.put("nums", "512");
@@ -48,7 +53,12 @@ class NumTest {
 		assertTrue( mid >= 50 && mid <= 100);
 		assertTrue( div >= 30.5 && div <= 32);
 	}
-
+	
+	/**
+	 * Test method
+	 * Add 32 numbers of numerical value to columns and print them through Utility.oo
+	 * @Test annotation represents the add test of the Num class.
+	 */
 	@Test
 	public void bigNum() {
 		Num num = new Num(the);
