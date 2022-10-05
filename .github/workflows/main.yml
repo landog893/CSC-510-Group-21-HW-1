@@ -1,8 +1,6 @@
 name: Build Workflow
-on: 
-  push:
-    branches:
-      - main
+on: push 
+
 jobs:
   build:
     name: Build job
@@ -36,7 +34,6 @@ jobs:
         run: |
           git config --global user.name "smarota17"
           git config --global user.email "shrutimarota@gmail.com"
-          #git checkout -b main
           pwd
           javadoc -d ./docs -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
           git pull 
