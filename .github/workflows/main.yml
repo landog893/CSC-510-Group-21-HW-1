@@ -39,7 +39,7 @@ jobs:
           git checkout -b javadocBranch
           pwd
           javadoc -sourcepath ./Group21HW/src com.group21.csc510.csv.lua
-          git pull origin/main
+          git pull origin
           git add -A
           git status
           git commit -am "Regenerating javadoc"
